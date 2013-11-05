@@ -32,6 +32,10 @@
 			var $html = $("<div id='" + rid + "' class='spstswitch'><div class='switch'></div><div id='" + id1 + "' class='contact'></div><div id='" + id2 + "' class='contact'></div></div>");
 			$('#canvas').append($html);
 			$('#' + rid).css({'top': top, 'left': left});
+			var that = this;
+			$('.switch').on('click', function(){
+				that.switch('noswitch');
+			});
 		}
 
 
@@ -66,6 +70,11 @@
 		this.d0 = '';
 		this.d1 = '';
 		this.mode='Volts';
+
+		this.create = function () {
+			var $html = $("<div id='multimeter'><div id='v_screen'><span id='answer'></span> <span id='unit'>Volts</span></div><div id='Volts' class='v_button active_mm'>Volts</div><div id='Ohms' class='v_button'>Ohms</div><div id='Amps' class='v_button'>Amps</div><div id='Ferads' class='v_button'>Ferads</div></div>");
+			$('body').append($html);
+		}
 		
 		this.Volts = function () {
 			var txt = document.getElementById("answer");

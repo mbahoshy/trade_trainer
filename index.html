@@ -19,20 +19,19 @@
 			$('#canvas').on('click', '.contact', contactClickHandler);
 			$('.v_button').click(meterClickHandler);
 			multiMeter1 = new MultiMeter();
+			multiMeter1.create();
 			level1 = new Level();
 			//sets initial values
 			//set_points ();
 
-			c1 = new Contact('c1', 10, 10);
-			c2 = new Contact('c2', 10, 100);
-			c3 = new Contact('c3', 100, 100);
-			c4 = new Contact('c4', 100, 200);
+			new Contact('c1', 10, 10);
+			new Contact('c2', 10, 100);
+			new Contact('c3', 100, 100);
+			new Contact('c4', 100, 200);
 
-			s1 = new SPSTSwitch();
-			s1.create('s1', 'sc1', 'sc2', 200, 200);
-			$('.switch').on('click', function(){
-				s1.switch('noswitch');
-			});
+			new SPSTSwitch().create('s1', 'sc1', 'sc2', 200, 200);
+
+			
 
 		});
 
@@ -40,14 +39,7 @@
 </head>
 <body>
 	<h1>Trade Trainer</h1>
-	<div id='multimeter'>
-		<div id='v_screen'><span id='answer'></span> <span id='unit'>Volts</span></div>
-		
-		<div id='Volts' class='v_button active_mm'>Volts</div>
-		<div id='Ohms' class='v_button'>Ohms</div>
-		<div id='Amps' class='v_button'>Amps</div>
-		<div id='Ferads' class='v_button'>Ferads</div>
-	</div>
+	
 	<div class='fright'>
 		<div id='canvas'>
 			<div id='answer'></div>
