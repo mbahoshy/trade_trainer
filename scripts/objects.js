@@ -5,6 +5,14 @@
 		$('#canvas').on('click', '.contact', contactClickHandler);
 		$('.v_button').click(meterClickHandler);
 		multiMeter1 = new MultiMeter();
+
+		var stage = new Kinetic.Stage({
+			container: 'canvas',
+			width: 590,
+			height: 600
+		});
+
+		var layer = new Kinetic.Layer();
 	}	
 
 
