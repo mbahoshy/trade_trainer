@@ -1,0 +1,26 @@
+<problem_set>
+
+<!-- PROBLEM 1 -->
+<problem_01>
+	<switch>
+		<c1 id ='c1' Volts='l1' Ohms='13' Device='a' Ferads=""	/>
+		<c2 id ='c2' Volts='l2' Ohms='13' Device='a' Ferads=""	/>
+		<c3 id ='c3' Volts='l2' Ohms='10' Device='a' Ferads=""	/>
+		<c4 id ='c3' Volts='l2' Ohms='10' Device='a' Ferads=""	/>
+		<spstswitch>
+			<sc1 id ='c1' Volts='l1' Ohms='13' Device='a' Ferads=""	/>
+			<sc2 id ='c1' Volts='l2' Ohms='13' Device='a' Ferads=""	/>
+		</spstswitch>
+	</switch>
+	<noswitch>
+		<c1 id ='c1' Volts='l1' Ohms='13' Device='a' Ferads=""	/>
+		<c2 id ='c2' Volts='l2' Ohms='13' Device='a' Ferads=""	/>
+		<c3 id ='c3' Volts='l2' Ohms='10' Device='a' Ferads=""	/>
+		<c4 id ='c3' Volts='l2' Ohms='10' Device='a' Ferads=""	/>
+		<spstswitch>
+			<sc1 id ='c1' Volts='l1' Ohms='13' Device='a' Ferads=""	/>
+			<sc2 id ='c1' Volts='l1' Ohms='13' Device='a' Ferads=""	/>
+		</spstswitch>
+	</noswitch>
+</problem_01>
+</problem_set>

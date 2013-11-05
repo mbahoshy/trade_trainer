@@ -1,0 +1,141 @@
+body {
+	width:950px;
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+	font-size:16px;
+}
+
+#canvas {
+	position:relative;
+	width:700px;
+	height:500px;
+	border: 3px solid #424242;
+	border-radius:15px;
+}
+
+
+#multimeter {
+	float:left;
+
+	width:175px;
+	height:250px;
+	background-color:#f6ff0e;
+
+	border: 3px solid #424242;
+	border-radius:15px;
+	-moz-border-radius:15px;
+	-webkit-border-radius:15px;
+}
+
+#v_screen {
+	width:123px;
+	height:40px;
+	margin-top:15px;
+	margin-left:auto;
+	margin-right:auto;
+	padding-left:10px;
+	padding-right:10px;
+	padding-top:20px;
+	background-color:#d4d4d4;
+	border-style:solid;
+	border-width:1px;
+	border-color:#424242;
+	border-radius: 15px 15px 0px 0px;
+	-moz-border-radius: 15px 15px 0px 0px;
+	-webkit-border-radius: 15px 15px 0px 0px;
+	font-size:20px;
+	text-align:right;
+}
+
+#v_screen txt {
+	padding-top:10px;
+	margin-left:10px;
+}
+
+.v_button {
+	width:60px;
+	margin-left:15px;
+	margin-top:20px;
+	padding-top:5px;
+	float:left;
+	height:30px;
+	text-align:center;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-style:solid;
+	border-width:1px;
+	border-color:#424242;
+}
+
+.v_button:hover {
+	background-color:#ff8282;
+	color:#f30000;
+	font-weight:bold;
+}
+
+.v_active {
+	background-color:#c3c10c;
+}
+
+
+/* contact styling */
+.contact {
+	position: absolute;
+	background-color: #dcdcdc;
+	border-style:solid;
+	border-width:2px;
+	border-color:#a4a4a4;
+	border-radius:50%;
+	-moz-border-radius:50%;
+	-webkit-border-radius:50%;
+	width:25px;
+	height:25px;
+}
+
+.border-red {
+	border-style:solid;
+	border-width:2px;
+	border-color:red;
+}
+
+.border-black {
+	border-style:solid;
+	border-width:2px;
+	border-color:black;
+}
+
+
+.fright {
+	float:right;
+
+}
+
+.spstswitch {
+	position:absolute;
+	width: 75px;
+	height: 150px;
+	background-color: grey;
+}
+
+.spstswitch .contact:first-child {
+	top:0px;
+	left:0px;
+
+}
+
+.spstswitch .contact:last-child {
+	top:125px;
+	left:0px;
+
+}
+
+.switch {
+	position: absolute;
+	width:20px;
+	height:80px;
+	background-color: blue;
+	top:35px;
+	left:27.5px;
+}
