@@ -31,14 +31,13 @@
 
 	}
 
-	function SPSTSwitch (rid, id1, id2, left, top, newswitch) {
+	function SPSTSwitch (id1, id2, left, top, newswitch) {
 
 		this.tmp_current_set = '';
 
-		this.create = function (rid, id1, id2, left, top, newswitch) {
-			var $html = $("<div id='" + rid + "' class='spstswitch'><div class='switch'></div><div id='" + id1 + "' class='contact'></div><div id='" + id2 + "' class='contact'></div></div>");
+		this.create = function (id1, id2, left, top, newswitch) {
+			var $html = $("<div style='top:" + top + "px;left:" + left + "px' class='spstswitch'><div class='switch'></div><div id='" + id1 + "' class='contact'></div><div id='" + id2 + "' class='contact'></div></div>");
 			$('#canvas').append($html);
-			$('#' + rid).css({'top': top, 'left': left});
 			var that = this;
 			$('.switch').on('click', function(){
 				that.switch(newswitch);
@@ -61,7 +60,7 @@
 
 		}
 
-		this.create(rid, id1, id2, left, top, newswitch);
+		this.create(id1, id2, left, top, newswitch);
 	}
 
 	function line (lid, points, color, stroke) {
