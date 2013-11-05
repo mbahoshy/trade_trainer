@@ -28,13 +28,13 @@
 
 		this.tmp_current_set = '';
 
-		this.create = function (rid, id1, id2, left, top) {
+		this.create = function (rid, id1, id2, left, top, newswitch) {
 			var $html = $("<div id='" + rid + "' class='spstswitch'><div class='switch'></div><div id='" + id1 + "' class='contact'></div><div id='" + id2 + "' class='contact'></div></div>");
 			$('#canvas').append($html);
 			$('#' + rid).css({'top': top, 'left': left});
 			var that = this;
 			$('.switch').on('click', function(){
-				that.switch('noswitch');
+				that.switch(newswitch);
 			});
 		}
 
