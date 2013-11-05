@@ -15,21 +15,15 @@
 
 	<script>
 		$(document).ready(function(){
-			current_problem='problem_01';
-			$('#canvas').on('click', '.contact', contactClickHandler);
-			$('.v_button').click(meterClickHandler);
-			multiMeter1 = new MultiMeter();
-			multiMeter1.create();
-			level1 = new Level();
-			//sets initial values
-			//set_points ();
+
+			new Game();
 
 			new Contact('c1', 10, 10);
 			new Contact('c2', 10, 100);
 			new Contact('c3', 100, 100);
 			new Contact('c4', 100, 200);
 
-			new SPSTSwitch().create('s1', 'sc1', 'sc2', 200, 200, 'noswitch');
+			new SPSTSwitch('s1', 'sc1', 'sc2', 200, 200, 'noswitch');
 
 			
 
@@ -40,9 +34,7 @@
 <body>
 	<h1>Trade Trainer</h1>
 	
-	<div class='fright'>
-		<div id='canvas'>
-		</div>
+	<div id='level_container'>
 	</div>
 
 </body>

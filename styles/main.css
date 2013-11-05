@@ -139,3 +139,7 @@ body {
 	top:35px;
 	left:27.5px;
 }
+
+#level_container {
+	float:right;
+}

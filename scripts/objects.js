@@ -1,4 +1,13 @@
-	
+	function Game () {
+		level1 = new Level();
+		var $html = $("<div id='canvas'></div>");
+		$('#level_container').append($html);
+		$('#canvas').on('click', '.contact', contactClickHandler);
+		$('.v_button').click(meterClickHandler);
+		multiMeter1 = new MultiMeter();
+	}	
+
+
 	function Level () {
 		this.current_problem = "problem_01";
 		this.current_set = "switch";
@@ -9,8 +18,6 @@
 		this.root = xmlDoc.getElementsByTagName("problem_set")[0];
 		this.proot = this.root.getElementsByTagName(this.current_problem)[0];
 		this.pset = this.proot.getElementsByTagName(this.current_set)[0];
-
-
 	}
 
 
@@ -24,7 +31,7 @@
 
 	}
 
-	function SPSTSwitch () {
+	function SPSTSwitch (rid, id1, id2, left, top, newswitch) {
 
 		this.tmp_current_set = '';
 
@@ -54,7 +61,7 @@
 
 		}
 
-
+		this.create(rid, id1, id2, left, top, newswitch);
 	}
 
 	function line (lid, points, color, stroke) {
@@ -75,7 +82,7 @@
 			var $html = $("<div id='multimeter'><div id='v_screen'><span id='answer'></span> <span id='unit'>Volts</span></div><div id='Volts' class='v_button active_mm'>Volts</div><div id='Ohms' class='v_button'>Ohms</div><div id='Amps' class='v_button'>Amps</div><div id='Ferads' class='v_button'>Ferads</div></div>");
 			$('body').append($html);
 		}
-		
+
 		this.Volts = function () {
 			var txt = document.getElementById("answer");
 			p0 = multiMeter1.p0;
@@ -167,4 +174,7 @@
 			$('.border-black').removeClass('border-black');
 			$('.border-red').removeClass('border-red');
 		}
+
+		this.create();
+
 	}
