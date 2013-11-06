@@ -7,10 +7,12 @@
 	<link rel='stylesheet' href='styles/main.css'	/>
 	
 	<!-- load scripts -->
-	<!--<script src='http://code.jquery.com/jquery-1.9.1.js'></script>-->
+	<!--<script src='http://code.jquery.com/jquery-1.9.1.js'></script>
+		<script src="scripts/kinetic.js"></script>
+		<script src='scripts/functions.js'></script>
+	-->
 	<script src="scripts/jquery.js"></script>
-	<script src="scripts/kinetic.js"></script>
-	<script src='scripts/functions.js'></script>
+	
 	<script src='scripts/objects.js'></script>
 
 	<script src='scripts/wires.js'></script>
@@ -20,12 +22,17 @@
 
 		$(document).ready(function(){
 			var HVAC = new Game();
+			HVAC.Create(700, 500);
 			HVAC.Contact('c1', 10, 10);
 			HVAC.Contact('c2', 10, 100);
 			HVAC.Contact('c3', 100, 100);
 			HVAC.Contact('c4', 100, 200);
 
 			HVAC.SPSTSwitch('sc1', 'sc2', 200, 200, 'noswitch');
+
+
+
+			//drawWires();
 
 		});
 

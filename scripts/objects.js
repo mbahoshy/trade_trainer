@@ -1,30 +1,28 @@
 
 
 function Game () {
-	var level1 = new Level();
-	var $html = $("<div id='canvas'></div>");
-	$('#level_container').append($html);
-	$('#canvas').on('click', '.contact', contactClickHandler);
-	
-	var multiMeter1 = new MultiMeter();
-	$('.v_button').click(meterClickHandler);
-	/*
-	var stage = new Kinetic.Stage({
-		container: 'canvas',
-		width: 590,
-		height: 600
-	});
+	var level1;
+	var multiMeter1;
 
-	var layer = new Kinetic.Layer();
-	*/
+	this.Create = function (width, height) {
+		level1 = new Level();
+		var $html = $("<div id='canvas'></div>");
+		$('#level_container').append($html);
+		$('#canvas').css({'width': width, 'height': height});
+		$('#canvas').on('click', '.contact', contactClickHandler);
+		
+		multiMeter1 = new MultiMeter();
+		$('.v_button').click(meterClickHandler);
+		/*
+		var stage = new Kinetic.Stage({
+			container: 'canvas',
+			width: 590,
+			height: 600
+		});
 
-
-
-	function Level () {
-		this.current_problem = "problem_01";
-		this.current_set = "switch";
+		var layer = new Kinetic.Layer();
+		*/
 	}
-
 
 	this.Contact = function (id, left, top) {
 		var $html = $("<div id='" + id + "' class='contact'	></div>");
@@ -71,6 +69,10 @@ function Game () {
 	/*function line (lid, points, color, stroke) {
 
 	}*/
+	function Level () {
+		this.current_problem = "problem_01";
+		this.current_set = "switch";
+	}
 
 	function MultiMeter () {
 		this.odd = true;
