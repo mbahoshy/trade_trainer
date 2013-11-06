@@ -20,8 +20,9 @@
 		var problem_set = {
 			"problem_01" : {
 				"switch": {
-					"c1": {"Volts": "l1"},
-					"c2": {"Volts": "l2"}
+					"c1": {"Volts": "l1", "Ohms": 14, "Ferads": '', "Device": ''},
+					"c2": {"Volts": "l1", "Ohms": 14, "Ferads": '', "Device": ''},
+					"c3": {"Volts": "l1", "Ohms": 14, "Ferads": '', "Device": ''}
 				},
 				"noswitch": {
 
@@ -40,7 +41,7 @@
 
 			new SPSTSwitch('sc1', 'sc2', 200, 200, 'noswitch');
 
-			alert(problem_set.problem_01.switch.c1.Volts);
+			alert(problem_set.problem_01.switch.c1.Ohms);
 
 		});
 
