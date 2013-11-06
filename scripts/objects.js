@@ -6,6 +6,7 @@
 		$('.v_button').click(meterClickHandler);
 		multiMeter1 = new MultiMeter();
 
+		/*
 		var stage = new Kinetic.Stage({
 			container: 'canvas',
 			width: 590,
@@ -13,6 +14,7 @@
 		});
 
 		var layer = new Kinetic.Layer();
+		*/
 	}	
 
 
@@ -20,9 +22,11 @@
 		this.current_problem = "problem_01";
 		this.current_set = "switch";
 
+		//look into functional reactive programming
 		this.setPset = function (){
 			this.pset = this.proot.getElementsByTagName(this.current_set)[0];
 		}
+
 		this.root = xmlDoc.getElementsByTagName("problem_set")[0];
 		this.proot = this.root.getElementsByTagName(this.current_problem)[0];
 		this.pset = this.proot.getElementsByTagName(this.current_set)[0];

@@ -13,7 +13,22 @@
 	<script src='scripts/functions.js'></script>
 	<script src='scripts/objects.js'></script>
 
+	<script src='scripts/wires.js'></script>
+	<!--<script src='json/variables.js'></script>-->
+
 	<script>
+		var problem_set = {
+			"problem_01" : {
+				"switch": {
+					"c1": {"Volts": "l1"},
+					"c2": {"Volts": "l2"}
+				},
+				"noswitch": {
+
+				}
+			}
+		};
+
 		$(document).ready(function(){
 
 			new Game();
@@ -25,7 +40,7 @@
 
 			new SPSTSwitch('sc1', 'sc2', 200, 200, 'noswitch');
 
-			
+			alert(problem_set.problem_01.switch.c1.Volts);
 
 		});
 

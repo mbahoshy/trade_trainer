@@ -1,3 +1,5 @@
+function drawWires () {
+
 		var stage = new Kinetic.Stage({
 			container: 'canvas',
 			width: 590,
@@ -11,7 +13,7 @@
 			id : 'test',
 			name: 'wireclick',
 			points: [10, 0, 2, 2, 4, 1],
-			stroke: red,
+			stroke: 'red',
 			strokeWidth: 20,
 			lineCap: 'round',
 			lineJoin: 'round',
@@ -20,3 +22,4 @@
 				
 		layer.add(red);
 		stage.add(layer);
+}
