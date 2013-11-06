@@ -30,6 +30,8 @@
 		this.root = xmlDoc.getElementsByTagName("problem_set")[0];
 		this.proot = this.root.getElementsByTagName(this.current_problem)[0];
 		this.pset = this.proot.getElementsByTagName(this.current_set)[0];
+
+		this.cproot = '';
 	}
 
 
