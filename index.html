@@ -14,32 +14,9 @@
 	<script src='scripts/objects.js'></script>
 
 	<script src='scripts/wires.js'></script>
-	<!--<script src='json/variables.js'></script>-->
+	<script src='json/variables.js'></script>
 
 	<script>
-		var problem_set = {
-			"problem_01" : {
-				"switch": {
-					"c1": {"Volts": "l2", "Ohms": 14, "Ferads": '', "Device": ''},
-					"c2": {"Volts": "l1", "Ohms": 14, "Ferads": '', "Device": ''},
-					"c3": {"Volts": "l1", "Ohms": 14, "Ferads": '', "Device": ''},
-					
-					//switch
-					"sc1": {"Volts": "l1", "Ohms": 14, "Ferads": '', "Device": ''},
-					"sc2": {"Volts": "l1", "Ohms": 14, "Ferads": '', "Device": ''}
-
-				},
-				"noswitch": {
-					"c1": {"Volts": "l2", "Ohms": 14, "Ferads": '', "Device": ''},
-					"c2": {"Volts": "l1", "Ohms": 14, "Ferads": '', "Device": ''},
-					"c3": {"Volts": "l1", "Ohms": 14, "Ferads": '', "Device": ''},
-					
-					//switch
-					"sc1": {"Volts": "l1", "Ohms": 14, "Ferads": '', "Device": ''},
-					"sc2": {"Volts": "l2", "Ohms": 14, "Ferads": '', "Device": ''}
-				}
-			}
-		};
 
 		$(document).ready(function(){
 
@@ -51,8 +28,6 @@
 			new Contact('c4', 100, 200);
 
 			new SPSTSwitch('sc1', 'sc2', 200, 200, 'noswitch');
-
-			alert(problem_set.problem_01.switch.c1.Ohms);
 
 		});
 

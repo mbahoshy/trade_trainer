@@ -6,10 +6,7 @@
 		mode = multiMeter1.mode;
 
 		p = problem_set[level1.current_problem][level1.current_set][cid][mode];
-		//p = (level1.pset).getElementsByTagName(cid)[0].getAttributeNode(mode).nodeValue;
-		alert(p);
 		d = problem_set[level1.current_problem][level1.current_set][cid].Device;
-		//d = (level1.pset).getElementsByTagName(cid)[0].getAttributeNode("Device").nodeValue;
 
 		if (multiMeter1.odd==true) {
 			$('.border-red').removeClass('border-red');

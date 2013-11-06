@@ -3,9 +3,9 @@
 		var $html = $("<div id='canvas'></div>");
 		$('#level_container').append($html);
 		$('#canvas').on('click', '.contact', contactClickHandler);
-		$('.v_button').click(meterClickHandler);
+		
 		multiMeter1 = new MultiMeter();
-
+		$('.v_button').click(meterClickHandler);
 		/*
 		var stage = new Kinetic.Stage({
 			container: 'canvas',
@@ -21,17 +21,6 @@
 	function Level () {
 		this.current_problem = "problem_01";
 		this.current_set = "switch";
-
-		//look into functional reactive programming
-		this.setPset = function (){
-			this.pset = this.proot.getElementsByTagName(this.current_set)[0];
-		}
-
-		this.root = xmlDoc.getElementsByTagName("problem_set")[0];
-		this.proot = this.root.getElementsByTagName(this.current_problem)[0];
-		this.pset = this.proot.getElementsByTagName(this.current_set)[0];
-
-		this.cproot = '';
 	}
 
 
@@ -62,12 +51,12 @@
 		this.switch = function (set1) {
 			if (level1.current_set == set1 ) {
 				level1.current_set = this.tmp_current_set;
-				level1.setPset();
+				//level1.setPset();
 				multiMeter1.clearMeter();
 			} else {
 				this.tmp_current_set = level1.current_set;
 				level1.current_set = set1;
-				level1.setPset();
+				//level1.setPset();
 				multiMeter1.clearMeter();
 			}
 
@@ -152,8 +141,7 @@
 			d0 = multiMeter1.d0;
 			d1 = multiMeter1.d1;
 
-
-			if (d0==d1) {
+			if (d0==d1 && d0 !== '' && d1 !== '') {
 				txt.innerHTML = +p0 + +p1;	
 			} else {
 				txt.innerHTML = "OL";
