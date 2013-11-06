@@ -1,21 +1,23 @@
-	function Game () {
-		level1 = new Level();
-		var $html = $("<div id='canvas'></div>");
-		$('#level_container').append($html);
-		$('#canvas').on('click', '.contact', contactClickHandler);
-		
-		multiMeter1 = new MultiMeter();
-		$('.v_button').click(meterClickHandler);
-		/*
-		var stage = new Kinetic.Stage({
-			container: 'canvas',
-			width: 590,
-			height: 600
-		});
 
-		var layer = new Kinetic.Layer();
-		*/
-	}	
+
+function Game () {
+	var level1 = new Level();
+	var $html = $("<div id='canvas'></div>");
+	$('#level_container').append($html);
+	$('#canvas').on('click', '.contact', contactClickHandler);
+	
+	var multiMeter1 = new MultiMeter();
+	$('.v_button').click(meterClickHandler);
+	/*
+	var stage = new Kinetic.Stage({
+		container: 'canvas',
+		width: 590,
+		height: 600
+	});
+
+	var layer = new Kinetic.Layer();
+	*/
+
 
 
 	function Level () {
@@ -24,17 +26,17 @@
 	}
 
 
-	function Contact (id, left, top) {
+	this.Contact = function (id, left, top) {
 		var $html = $("<div id='" + id + "' class='contact'	></div>");
 		$('#canvas').append($html);
 		$('#' + id).css({'top': top, 'left': left});
 	}
 
-	function Relay () {
+	/*function Relay () {
 
-	}
+	}*/
 
-	function SPSTSwitch (id1, id2, left, top, newswitch) {
+	this.SPSTSwitch = function (id1, id2, left, top, newswitch) {
 
 		this.tmp_current_set = '';
 
@@ -66,9 +68,9 @@
 		this.create(id1, id2, left, top, newswitch);
 	}
 
-	function line (lid, points, color, stroke) {
+	/*function line (lid, points, color, stroke) {
 
-	}
+	}*/
 
 	function MultiMeter () {
 		this.odd = true;
@@ -179,3 +181,41 @@
 		this.create();
 
 	}
+
+
+/* CONTACT CLICK HANDLER */
+
+	function contactClickHandler () {
+		cid = $(this).attr('id');
+		mode = multiMeter1.mode;
+
+		p = problem_set[level1.current_problem][level1.current_set][cid][mode];
+		d = problem_set[level1.current_problem][level1.current_set][cid].Device;
+
+		if (multiMeter1.odd==true) {
+			$('.border-red').removeClass('border-red');
+			$("#" + cid).addClass('border-red');
+			multiMeter1.p0 = p;
+			multiMeter1.d0 = d;
+			multiMeter1.odd = false;
+		} else {
+			$('.border-black').removeClass('border-black');
+			$("#" + cid).addClass('border-black');
+			multiMeter1.p1 = p;
+			multiMeter1.d1 = d;
+			multiMeter1.odd = true;
+		}
+		
+		multiMeter1[mode]();
+	}
+
+	function meterClickHandler () {
+		mid = $(this).attr('id');
+		multiMeter1.mode = mid;
+		multiMeter1.clearMeter();
+		$('#unit').html(mid);
+		$('.v_active').removeClass('v_active');
+		$(this).addClass('v_active');
+
+	}	
+}	

@@ -19,15 +19,13 @@
 	<script>
 
 		$(document).ready(function(){
+			var HVAC = new Game();
+			HVAC.Contact('c1', 10, 10);
+			HVAC.Contact('c2', 10, 100);
+			HVAC.Contact('c3', 100, 100);
+			HVAC.Contact('c4', 100, 200);
 
-			new Game();
-
-			new Contact('c1', 10, 10);
-			new Contact('c2', 10, 100);
-			new Contact('c3', 100, 100);
-			new Contact('c4', 100, 200);
-
-			new SPSTSwitch('sc1', 'sc2', 200, 200, 'noswitch');
+			HVAC.SPSTSwitch('sc1', 'sc2', 200, 200, 'noswitch');
 
 		});
 
