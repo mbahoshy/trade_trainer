@@ -8,11 +8,11 @@
 	
 	<!-- load scripts -->
 	<!--<script src='http://code.jquery.com/jquery-1.9.1.js'></script>
-		<script src="scripts/kinetic.js"></script>
+		
 		<script src='scripts/functions.js'></script>
 	-->
 	<script src="scripts/jquery.js"></script>
-	
+	<script src="scripts/kinetic.js"></script>
 	<script src='scripts/objects.js'></script>
 
 	<script src='scripts/wires.js'></script>
@@ -21,7 +21,6 @@
 	<script>
 
 		$(document).ready(function(){
-			//var HVAC = new Game();
 			HVAC.Create(700, 500);
 			HVAC.Contact('c1', 10, 10);
 			HVAC.Contact('c2', 10, 100);
@@ -30,7 +29,38 @@
 
 			HVAC.SPSTSwitch('sc1', 'sc2', 200, 200, 'noswitch');
 
+			HVAC.DrawWire('w1', 'blue', 8, [25, 35, 25, 100]);
 
+			
+			/*
+			Line1 = new Kinetic.Line({
+				points: [0, 0, 0, 10, 20, 10],
+				stroke: 'red',
+				strokeWidth: 8,
+				lineCap: 'round',
+				lineJoin: 'round'
+			});
+
+			layer.add(Line1);
+			stage.add(layer);
+
+			
+			var myfab = new fabric.Canvas('mycanvas');
+
+			var rect = new fabric.Rect({
+			  left: 100,
+			  top: 100,
+			  fill: 'red',
+			  width: 120,
+			  height: 120
+			});
+			rect.animate('angle', 500, {
+			  onChange: myfab.renderAll.bind(myfab),
+			  duration: 1000,
+			  easing: fabric.util.ease.easeOutBounce
+			});
+			myfab.add(rect);
+			*/
 
 			//drawWires();
 
@@ -42,7 +72,8 @@
 	<h1>Trade Trainer</h1>
 	
 	<div id='level_container'>
+		
 	</div>
-
+	
 </body>
 </html>

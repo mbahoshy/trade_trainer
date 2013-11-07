@@ -2,16 +2,45 @@
 var HVAC = (function () {
 			var level1;
 			var multiMeter1;
+			var stage;
+			var layer;
 
 			this.Create = function (width, height) {
 				level1 = new Level();
-				var $html = $("<div id='canvas'></div>");
+				var $html = $("<div id='canvas'><div id='mycanvas'></div></div>");
 				$('#level_container').append($html);
 				$('#canvas').css({'width': width, 'height': height});
 				$('#canvas').on('click', '.contact', contactClickHandler);
 				
 				multiMeter1 = new MultiMeter();
 				$('.v_button').click(meterClickHandler);
+
+				stage = new Kinetic.Stage({
+					container: 'mycanvas',
+					width: width,
+					height: height
+				});
+
+				layer = new Kinetic.Layer();
+			}
+
+			this.DrawWire = function (wid, color, width, sarray){
+				argLength = arguments.length;
+				alert(argLength);
+
+				wid = new Kinetic.Line({
+					id: wid,
+					points: sarray,
+					stroke: color,
+					strokeWidth: width,
+					lineCap: 'round',
+					lineJoin: 'round'
+				});
+
+				wid.on('click', function () { multiMeter1.Amps(this.getId());});
+
+				layer.add(wid);
+				stage.add(layer);
 
 			}
 
@@ -154,6 +183,13 @@ var HVAC = (function () {
 					}
 				}
 
+				this.Amps = function (wid) {
+					if (multiMeter1.mode === 'Amps') {
+						var txt = document.getElementById("answer");
+						txt.innerHTML = problem_set[level1.current_problem][level1.current_set][wid].Amps;
+					}
+				}
+
 				this.clearMeter = function () {
 					var txt = document.getElementById("answer");
 					txt.innerHTML = '';	
@@ -194,7 +230,6 @@ var HVAC = (function () {
 				
 				multiMeter1[mode]();
 			}
-
 
 			// METER CLICK HANDLER
 			function meterClickHandler () {

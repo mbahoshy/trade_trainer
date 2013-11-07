@@ -7,7 +7,10 @@ var problem_set = {
 			
 			//switch
 			"sc1": {"Volts": "l1", "Ohms": 14, "Ferads": '', "Device": 'ss'},
-			"sc2": {"Volts": "l1", "Ohms": 14, "Ferads": '', "Device": 'ss'}
+			"sc2": {"Volts": "l1", "Ohms": 14, "Ferads": '', "Device": 'ss'},
+
+			//wires
+			"w1": {"Amps": 40}
 
 		},
 		"noswitch": {
@@ -17,7 +20,10 @@ var problem_set = {
 			
 			//switch
 			"sc1": {"Volts": "l1", "Ohms": 14, "Ferads": '', "Device": ''},
-			"sc2": {"Volts": "l2", "Ohms": 14, "Ferads": '', "Device": ''}
+			"sc2": {"Volts": "l2", "Ohms": 14, "Ferads": '', "Device": ''},
+
+			//wires
+			"w1": {"Amps": 40}
 		}
 	}
 };
