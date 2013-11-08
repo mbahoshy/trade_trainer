@@ -26,6 +26,33 @@ var HVAC = (function () {
 				layer = new Kinetic.Layer();
 			}
 
+			this.LightBulb = function (left, top) {
+				var $html = $("<div style='position:absolute;top:" + top + "px;left:" + left + "px'><div style='top:151px;left:12px' class='contact'></div><div style='top:151px;right:12px' class='contact'></div><canvas width=120 height=180 id='light_bulb_canvas'></canvas></div>");
+				$('#canvas').append($html);
+
+
+				var canvas = document.getElementById('light_bulb_canvas');
+				var context = canvas.getContext('2d');
+
+				// begin custom shape
+				context.beginPath();
+
+				context.moveTo(40, 150);
+				context.lineTo(40, 125);
+				context.bezierCurveTo(-60, -30, 180, -30, 80, 125);
+				context.lineTo(80, 150);
+				context.lineTo(40, 150);
+				context.bezierCurveTo(40, 180, 80, 180, 80, 150);
+
+
+
+				// complete custom shape
+				context.closePath();
+				context.lineWidth = 5;
+				context.strokeStyle = 'blue';
+				context.stroke();
+			}
+
 			this.DrawWire = function (wid, color, width, sarray){
 
 				function wire_mouseover() {
@@ -81,7 +108,7 @@ var HVAC = (function () {
 
 				this.create = function (id1, id2, left, top, newswitch) {
 
-					var $html = $("<div style='top:" + top + "px;left:" + left + "px' class='spstswitch'><div class='switch'></div><div id='" + id1 + "' class='contact' style='top:0px;left:-10px'></div><div id='" + id2 + "' class='contact' style='top:91px;left:-10px;'></div></div>");
+					var $html = $("<div style='top:" + top + "px;left:" + left + "px' class='spstswitch'><div class='switch'></div><div id='" + id1 + "' class='contact' style='top:0px;left:-10px'></div><div id='" + id2 + "' class='contact' style='top:91px;right:-10px;'></div></div>");
 					$('#canvas').append($html);
 					var that = this;
 					$('.switch').on('click', function(){

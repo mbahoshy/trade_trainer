@@ -154,6 +154,9 @@ body {
 	height:25px;
 }
 
+#light_bulb_canvas {
+}
+
 .border-red {
 	border-style:solid;
 	border-width:2px;
