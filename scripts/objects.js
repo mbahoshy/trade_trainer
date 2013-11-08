@@ -6,13 +6,15 @@ var HVAC = (function () {
 			var layer;
 
 			this.Create = function (width, height) {
+				var styles = ["float:right"];
 				level1 = new Level();
-				var $html = $("<div id='canvas'><div id='mycanvas'></div></div>");
+				multiMeter1 = new MultiMeter();
+				var $html = $("<div style='float:right;'><div id='canvas'><div id='mycanvas'></div></div></div>");
 				$('#level_container').append($html);
 				$('#canvas').css({'width': width, 'height': height});
 				$('#canvas').on('click', '.contact', contactClickHandler);
 				
-				multiMeter1 = new MultiMeter();
+				
 				$('.v_button').click(meterClickHandler);
 
 				stage = new Kinetic.Stage({
@@ -35,9 +37,11 @@ var HVAC = (function () {
 					layer.draw();
 				}
 
+				var nsarray = $.map(sarray, function (x){return x + 15;});
+
 				tmp = new Kinetic.Line({
 					id: wid,
-					points: sarray,
+					points: nsarray,
 					stroke: color,
 					strokeWidth: width,
 					lineCap: 'round',
@@ -46,7 +50,7 @@ var HVAC = (function () {
 
 				wid = new Kinetic.Line({
 					id: wid,
-					points: sarray,
+					points: nsarray,
 					stroke: 'red',
 					strokeWidth: 20,
 					lineCap: 'round',
@@ -76,6 +80,7 @@ var HVAC = (function () {
 				this.tmp_current_set = '';
 
 				this.create = function (id1, id2, left, top, newswitch) {
+
 					var $html = $("<div style='top:" + top + "px;left:" + left + "px' class='spstswitch'><div class='switch'></div><div id='" + id1 + "' class='contact' style='top:0px;left:-10px'></div><div id='" + id2 + "' class='contact' style='top:91px;left:-10px;'></div></div>");
 					$('#canvas').append($html);
 					var that = this;
@@ -120,7 +125,7 @@ var HVAC = (function () {
 
 				this.create = function () {
 					var $html = $("<div id='multimeter'><div id='v_screen'><span id='answer'></span> <span id='unit'>Volts</span></div><div id='Volts' class='v_button active_mm'>Volts</div><div id='Ohms' class='v_button'>Ohms</div><div id='Amps' class='v_button'>Amps</div><div id='Ferads' class='v_button'>Ferads</div></div>");
-					$('body').append($html);
+					$('#level_container').append($html);
 				}
 
 				this.Volts = function () {
