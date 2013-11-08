@@ -25,10 +25,17 @@ var HVAC = (function () {
 			}
 
 			this.DrawWire = function (wid, color, width, sarray){
-				argLength = arguments.length;
-				alert(argLength);
 
-				wid = new Kinetic.Line({
+				function wire_mouseover() {
+					this.setOpacity(.6);
+					layer.draw();
+				}
+				function wire_mouseout() {
+					this.setOpacity(0);
+					layer.draw();
+				}
+
+				tmp = new Kinetic.Line({
 					id: wid,
 					points: sarray,
 					stroke: color,
@@ -37,9 +44,22 @@ var HVAC = (function () {
 					lineJoin: 'round'
 				});
 
-				wid.on('click', function () { multiMeter1.Amps(this.getId());});
+				wid = new Kinetic.Line({
+					id: wid,
+					points: sarray,
+					stroke: 'red',
+					strokeWidth: 20,
+					lineCap: 'round',
+					lineJoin: 'round',
+					opacity:0
+				});
 
-				layer.add(wid);
+				wid.on('click', function () { multiMeter1.Amps(this.getId());});
+				wid.on('mouseover', wire_mouseover);
+				wid.on('mouseout', wire_mouseout);
+
+				layer.add(tmp);
+				layer.add(wid);			
 				stage.add(layer);
 
 			}
@@ -56,7 +76,7 @@ var HVAC = (function () {
 				this.tmp_current_set = '';
 
 				this.create = function (id1, id2, left, top, newswitch) {
-					var $html = $("<div style='top:" + top + "px;left:" + left + "px' class='spstswitch'><div class='switch'></div><div id='" + id1 + "' class='contact'></div><div id='" + id2 + "' class='contact'></div></div>");
+					var $html = $("<div style='top:" + top + "px;left:" + left + "px' class='spstswitch'><div class='switch'></div><div id='" + id1 + "' class='contact' style='top:0px;left:-10px'></div><div id='" + id2 + "' class='contact' style='top:91px;left:-10px;'></div></div>");
 					$('#canvas').append($html);
 					var that = this;
 					$('.switch').on('click', function(){

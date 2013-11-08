@@ -114,30 +114,20 @@ body {
 
 .spstswitch {
 	position:absolute;
-	width: 75px;
-	height: 150px;
+	width: 60px;
+	height: 120px;
 	background-color: grey;
-}
-
-.spstswitch .contact:first-child {
-	top:0px;
-	left:0px;
-
-}
-
-.spstswitch .contact:last-child {
-	top:125px;
-	left:0px;
-
+	border-radius: 8px;
 }
 
 .switch {
 	position: absolute;
 	width:20px;
-	height:80px;
+	height:70px;
 	background-color: blue;
-	top:35px;
-	left:27.5px;
+	top:25px;
+	left:20px;
+	border-radius: 5px;
 }
 
 #level_container {
