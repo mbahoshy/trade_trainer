@@ -27,30 +27,84 @@ var HVAC = (function () {
 			}
 
 			this.LightBulb = function (left, top) {
-				var $html = $("<div style='position:absolute;top:" + top + "px;left:" + left + "px'><div style='top:151px;left:12px' class='contact'></div><div style='top:151px;right:12px' class='contact'></div><canvas width=120 height=180 id='light_bulb_canvas'></canvas></div>");
+
+				this.on = false;
+
+				$(this).on('penis', function(){
+					alert('vagina');
+				});
+
+				var $html = $("<div style='position:absolute;top:" + top + "px;left:" + left + "px'><div style='top:151px;left:0px' class='contact'></div><div style='top:151px;right:0px' class='contact'></div><canvas width=96 height=180 id='light_bulb_canvas'></canvas></div>");
 				$('#canvas').append($html);
 
 
 				var canvas = document.getElementById('light_bulb_canvas');
 				var context = canvas.getContext('2d');
+				var bottom = canvas.getContext('2d');
+				
 
 				// begin custom shape
 				context.beginPath();
 
-				context.moveTo(40, 150);
-				context.lineTo(40, 125);
-				context.bezierCurveTo(-60, -30, 180, -30, 80, 125);
-				context.lineTo(80, 150);
-				context.lineTo(40, 150);
-				context.bezierCurveTo(40, 180, 80, 180, 80, 150);
-
-
-
+				context.moveTo(28, 150);
+				context.lineTo(28, 125);
+				context.bezierCurveTo(-72, -30, 168, -30, 68, 125);
+				context.lineTo(68, 150);
+				
 				// complete custom shape
 				context.closePath();
+					var grd = context.createRadialGradient(48, 70, 10, 48, 70, 30);
+			      // light blue
+			    	grd.addColorStop(0, '#FFFFFF');
+			      // dark blue
+			    	grd.addColorStop(1, '#F0FF5A');
+				context.fillStyle = grd;
+     			context.fill();
 				context.lineWidth = 5;
 				context.strokeStyle = 'blue';
 				context.stroke();
+
+				bottom.beginPath();
+
+				bottom.moveTo(28, 150);
+				
+				bottom.lineTo(28, 150);
+				bottom.bezierCurveTo(28, 180, 68, 180, 68, 150);
+				bottom.closePath();
+				bottom.lineWidth = 5;
+				bottom.strokeStyle = 'blue';
+				bottom.fillStyle = 'blue';
+     			bottom.fill();
+				bottom.stroke();
+
+				var resistor = canvas.getContext('2d');
+
+				resistor.beginPath();
+
+				resistor.moveTo(42, 150);
+				resistor.lineTo(42, 110);
+				resistor.lineTo(27, 70);
+
+				resistor.lineTo(30, 66);
+				resistor.lineTo(36, 74);
+				resistor.lineTo(42, 66);
+				resistor.lineTo(48, 74);
+				resistor.lineTo(54, 66);
+				resistor.lineTo(60, 74);
+				resistor.lineTo(66, 66);
+				resistor.lineTo(69, 70);
+	
+			
+
+				resistor.lineTo(69, 70);
+				resistor.lineTo(53, 110);
+				resistor.lineTo(53, 150);
+
+				// complete custom shape
+				resistor.closePath();
+				resistor.lineWidth = 2;
+				resistor.strokeStyle = 'blue';
+				resistor.stroke();
 			}
 
 			this.DrawWire = function (wid, color, width, sarray){
@@ -285,6 +339,7 @@ var HVAC = (function () {
 
 			// METER CLICK HANDLER
 			function meterClickHandler () {
+				$('#canvas').trigger('penis')
 				mid = $(this).attr('id');
 				multiMeter1.mode = mid;
 				multiMeter1.clearMeter();
@@ -293,6 +348,13 @@ var HVAC = (function () {
 				$(this).addClass('v_active');
 
 			}
+
+			function resetCanvas() {
+				if (HVAC.LightBulb){
+					alert('hello');
+				}
+			}
+			//this.resetCanvas();
 
 			return this;
 			

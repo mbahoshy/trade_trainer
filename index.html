@@ -24,14 +24,17 @@
 		$(document).ready(function(){
 			HVAC.Create(700, 300);
 			HVAC.Contact('c1', 10, 10);
-			HVAC.Contact('c2', 10, 100);
+			HVAC.Contact('c2', 10, 120);
+			HVAC.Contact('c3', 660, 212);
 			//HVAC.Contact('c3', 100, 100);
 			//HVAC.Contact('c4', 100, 200);
 
-			HVAC.SPSTSwitch('sc1', 'sc2', 120, 80, 'noswitch');
-			HVAC.LightBulb(290, 20);
-			HVAC.DrawWire('w1', 'blue', 8, [10, 10, 10, 100]);
-			HVAC.DrawWire('w2', 'blue', 8, [10, 100, 150, 100]);
+			HVAC.SPSTSwitch('sc1', 'sc2', 120, 120, 'noswitch');
+			HVAC.LightBulb(290, 60);
+			HVAC.DrawWire('w1', 'blue', 8, [10, 10, 10, 120]);
+			HVAC.DrawWire('w2', 'blue', 8, [10, 120, 120, 120]);
+			HVAC.DrawWire('w3', 'blue', 8, [160, 210, 290, 210]);
+			HVAC.DrawWire('w4', 'blue', 8, [360, 210, 660, 210]);
 
 
 		});

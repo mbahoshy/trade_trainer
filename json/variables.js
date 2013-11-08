@@ -12,7 +12,10 @@ var problem_set = {
 
 			//wires
 			"w1": {"Amps": 40},
-			"w2": {"Amps": 2}
+			"w2": {"Amps": 2},
+
+			//light
+			"light": true
 
 		},
 		"noswitch": {
@@ -27,7 +30,10 @@ var problem_set = {
 
 			//wires
 			"w1": {"Amps": 20},
-			"w2": {"Amps": 4}
+			"w2": {"Amps": 4},
+
+			//light
+			"light": false
 		}
 	}
 };
