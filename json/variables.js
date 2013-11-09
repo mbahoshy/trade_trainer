@@ -1,10 +1,14 @@
 var problem_set = {
 	"problem_01" : {
 		"switch": {
-			"c1": {"Volts": "l2", "Ohms": 14, "Ferads": '', "Device": ''},
+
+			//neutral
+			"n1": {"Volts": "g", "Ohms": 14, "Ferads": '', "Device": ''},
+			"line1": {"Volts": "l1", "Ohms": 14, "Ferads": '', "Device": ''},
+
+			//contacts
 			"c2": {"Volts": "l1", "Ohms": 14, "Ferads": '', "Device": ''},
-			"c3": {"Volts": "l1", "Ohms": 14, "Ferads": '', "Device": ''},
-			"c4": {"Volts": "l1", "Ohms": 14, "Ferads": '', "Device": ''},
+			"c3": {"Volts": "g", "Ohms": 14, "Ferads": '', "Device": ''},
 			
 			//switch
 			"spst1": {"on": true},
@@ -12,31 +16,44 @@ var problem_set = {
 			"sc2": {"Volts": "l1", "Ohms": 14, "Ferads": '', "Device": 'ss'},
 
 			//wires
-			"w1": {"Amps": 40},
-			"w2": {"Amps": 2},
+			"w1": {"Amps": 1.2},
+			"w2": {"Amps": 1.2},
+			"w3": {"Amps": 1.2},
+			"w4": {"Amps": 1.2},
+			"w5": {"Amps": 1.2},
 
 			//light
-			"l1": {"on": true}
+			"l1": {"on": true},
+			"lc1": {"Volts": "l1", "Ohms": 14, "Ferads": '', "Device": 'ss'},
+			"lc2": {"Volts": "g", "Ohms": 14, "Ferads": '', "Device": 'ss'}
 
 
 		},
 		"noswitch": {
-			"c1": {"Volts": "l2", "Ohms": 14, "Ferads": '', "Device": ''},
+			//neutral
+			"n1": {"Volts": "g", "Ohms": 14, "Ferads": '', "Device": ''},
+			"line1": {"Volts": "l1", "Ohms": 14, "Ferads": '', "Device": ''},
+
+			//contacts
 			"c2": {"Volts": "l1", "Ohms": 14, "Ferads": '', "Device": ''},
-			"c3": {"Volts": "l1", "Ohms": 14, "Ferads": '', "Device": ''},
-			"c4": {"Volts": "l1", "Ohms": 14, "Ferads": '', "Device": ''},
-			
+			"c3": {"Volts": "g", "Ohms": 14, "Ferads": '', "Device": ''},
+						
 			//switch
 			"spst1": {"on": false},
-			"sc1": {"Volts": "l1", "Ohms": 14, "Ferads": '', "Device": ''},
-			"sc2": {"Volts": "l2", "Ohms": 14, "Ferads": '', "Device": ''},
+			"sc1": {"Volts": "l1", "Ohms": 14, "Ferads": '', "Device": 'ss'},
+			"sc2": {"Volts": "g", "Ohms": 14, "Ferads": '', "Device": 'ss'},
 
 			//wires
-			"w1": {"Amps": 20},
-			"w2": {"Amps": 4},
+			"w1": {"Amps": 0},
+			"w2": {"Amps": 0},
+			"w3": {"Amps": 0},
+			"w4": {"Amps": 0},
+			"w5": {"Amps": 0},
 
 			//light
-			"l1": {"on": false}
+			"l1": {"on": false},
+			"lc1": {"Volts": "g", "Ohms": 14, "Ferads": '', "Device": 'ss'},
+			"lc2": {"Volts": "g", "Ohms": 14, "Ferads": '', "Device": 'ss'}
 		}
 	}
 };

@@ -12,8 +12,7 @@ var HVAC = (function () {
 				var $html = $("<div style='float:right;'><div id='canvas'><div id='mycanvas'></div></div></div>");
 				$('#level_container').append($html);
 				$('#canvas').css({'width': width, 'height': height});
-				$('#canvas').on('click', '.contact', contactClickHandler);
-				
+				$('#canvas').on('click', '.contact, .neutral, .l1, .l2, .contact-small', contactClickHandler);
 				
 				$('.v_button').click(meterClickHandler);
 
@@ -26,26 +25,18 @@ var HVAC = (function () {
 				layer = new Kinetic.Layer();
 			}
 
-			this.LightBulb = function (id, cid, cid2, left, top) {
+			this.LightBulb = function (id, cid, cid2, left, top) {		
 
-				var on;			
-				this.id = id;
-				var that = this;
 				$(this).on('reset', function(){
-					on = problem_set[level1.current_problem][level1.current_set][this.id].on;
-					if (on == false) {
-						on = true;
-						resistor.stroke();
-						context.fillStyle = grd;
+					var on = problem_set[level1.current_problem][level1.current_set][id].on;
+					if (on === false) {
+						context.fillStyle = '#FFFFFF';
      					context.fill();
      					context.stroke();
 
      					
-					} else {
-						on = false;
-						
-     					
-     					context.fillStyle = '#FFFFFF';
+					} else if (on === true) {
+     					context.fillStyle = grd;
      					context.fill();
      					context.stroke();
 					}
@@ -58,6 +49,7 @@ var HVAC = (function () {
 
 
 				var canvas = document.getElementById('light_bulb_canvas');
+
 				var context = canvas.getContext('2d');
 				var bottom = canvas.getContext('2d');
 				
@@ -175,23 +167,60 @@ var HVAC = (function () {
 				$('#' + id).css({'top': top, 'left': left});
 			}
 
+			this.ContactSmall = function (id, left, top) {
+				var $html = $("<div id='" + id + "' class='contact-small'	></div>");
+				$('#canvas').append($html);
+				$('#' + id).css({'top': top, 'left': left});
+			}
 
-			this.SPSTSwitch = function (sid, id1, id2, left, top, newswitch) {
+			this.Neutral = function (id, left, top) {
+				var $html = $("<div id='" + id + "' class='neutral'	>N</div>");
+				$('#canvas').append($html);
+				$('#' + id).css({'top': top, 'left': left});
+			}
 
-				this.tmp_current_set = '';
+			this.Line1 = function (id, left, top) {
+				var $html = $("<div id='" + id + "' class='l1'	>L1</div>");
+				$('#canvas').append($html);
+				$('#' + id).css({'top': top, 'left': left});
+			}
 
-				this.create = function (id1, id2, left, top, newswitch) {
+			this.Line2 = function (id, left, top) {
+				var $html = $("<div id='" + id + "' class='l2'	>L2</div>");
+				$('#canvas').append($html);
+				$('#' + id).css({'top': top, 'left': left});
+			}
 
-					var $html = $("<div style='top:" + top + "px;left:" + left + "px' class='spstswitch'><div class='switch'></div><div id='" + id1 + "' class='contact' style='top:0px;left:-10px'></div><div id='" + id2 + "' class='contact' style='top:91px;right:-10px;'></div></div>");
+			this.Relay = function (id, c0, c1, c2, c3, c4, left , top) {
+				var $html = $("<div id ='" + id + "' class='relay'><div id='' style='top:px;left:px' class='contact'><div id='' style='top:px;left:px' class='contact'><div id='' style='top:px;left:px' class='contact'><div id='' class='contact-small'></div><div id='' class='contact-small'></div></div>");
+				$('#canvas').append($html);
+				$('#' + id).css({'top': top, 'left': left});
+			}
+
+			this.SPSTSwitch = function (id, c0, c1, left, top, newswitch) {
+
+				this.tmp_current_set = ''; //keeps track of the current_set before the switch was hit
+
+				$(this).on('reset', function () {
+					var on = problem_set[level1.current_problem][level1.current_set][id].on;
+					if (on === false) {
+						$('#' + id + ' > .switch').html("<div class='switch-off'><p>OFF</p></div>")
+					} else if (on === true) {
+						$('#' + id + ' > .switch').html("<div class='switch-on'><p>ON</p></div>")
+					}
+				});
+
+				this.create = function (id, c0, c1, left, top, newswitch) {
+
+					var $html = $("<div style='top:" + top + "px;left:" + left + "px' id = '" + id + "' class='spstswitch'><div class='switch'></div><div id='" + c0 + "' class='contact' style='top:0px;left:-10px'></div><div id='" + c1 + "' class='contact' style='top:91px;right:-10px;'></div></div>");
 					$('#canvas').append($html);
 					var that = this;
-					$('.switch').on('click', function(){
-						that.switch(newswitch);
-					});
+					$("#" + id).on('click', '.switch', function(){that.switch(newswitch);}); //assigns click event for newly created switch
 				}
 
 
 				this.switch = function (set1) {
+
 					if (level1.current_set == set1 ) {
 						level1.current_set = this.tmp_current_set;
 						//level1.setPset();
@@ -202,22 +231,25 @@ var HVAC = (function () {
 						//level1.setPset();
 						multiMeter1.clearMeter();
 					}
+					
 					$('#canvas').trigger('reset');
 
 				}
 
-				this.create(id1, id2, left, top, newswitch);
+				this.create(id, c0, c1, left, top, newswitch);
 			}
+
+			this.Set = function (problem, set) {
+					level1.current_problem = problem;
+					level1.current_set = set;
+			}
+
 			
 			function Level () {
 				this.current_problem = "";
 				this.current_set = "";
 			}
 
-			this.Set = function (problem, set) {
-					level1.current_problem = problem;
-					level1.current_set = set;
-				}
 
 			function MultiMeter () {
 				this.odd = true;
@@ -264,15 +296,15 @@ var HVAC = (function () {
 						txt.innerHTML = "0";	
 					}		
 					
-					else if ((p0=='gon' && p1=='l1') || (p0=='l1' && p1=='gon')){
+					else if ((p0=='g' && p1=='l1') || (p0=='l1' && p1=='g')){
 						txt.innerHTML = "120";	
 					}
 					
-					else if ((p0=='gon' && p1=='l2') || (p0=='l2' && p1=='gon')){
+					else if ((p0=='g' && p1=='l2') || (p0=='l2' && p1=='g')){
 						txt.innerHTML = "120";	
 					}
 					
-					else if ((p0=='gon' && p1=='24h') || (p0=='24h' && p1=='gon')){
+					else if ((p0=='g' && p1=='24h') || (p0=='24h' && p1=='g')){
 						txt.innerHTML = "24";	
 					}
 					
