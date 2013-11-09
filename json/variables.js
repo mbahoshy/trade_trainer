@@ -7,6 +7,7 @@ var problem_set = {
 			"c4": {"Volts": "l1", "Ohms": 14, "Ferads": '', "Device": ''},
 			
 			//switch
+			"spst1": {"on": true},
 			"sc1": {"Volts": "l1", "Ohms": 14, "Ferads": '', "Device": 'ss'},
 			"sc2": {"Volts": "l1", "Ohms": 14, "Ferads": '', "Device": 'ss'},
 
@@ -15,7 +16,8 @@ var problem_set = {
 			"w2": {"Amps": 2},
 
 			//light
-			"light": true
+			"l1": {"on": true}
+
 
 		},
 		"noswitch": {
@@ -25,6 +27,7 @@ var problem_set = {
 			"c4": {"Volts": "l1", "Ohms": 14, "Ferads": '', "Device": ''},
 			
 			//switch
+			"spst1": {"on": false},
 			"sc1": {"Volts": "l1", "Ohms": 14, "Ferads": '', "Device": ''},
 			"sc2": {"Volts": "l2", "Ohms": 14, "Ferads": '', "Device": ''},
 
@@ -33,7 +36,7 @@ var problem_set = {
 			"w2": {"Amps": 4},
 
 			//light
-			"light": false
+			"l1": {"on": false}
 		}
 	}
 };

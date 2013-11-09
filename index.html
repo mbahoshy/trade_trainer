@@ -23,14 +23,15 @@
 
 		$(document).ready(function(){
 			HVAC.Create(700, 300);
+			HVAC.Set('problem_01', 'switch');
 			HVAC.Contact('c1', 10, 10);
 			HVAC.Contact('c2', 10, 120);
 			HVAC.Contact('c3', 660, 212);
 			//HVAC.Contact('c3', 100, 100);
 			//HVAC.Contact('c4', 100, 200);
 
-			HVAC.SPSTSwitch('sc1', 'sc2', 120, 120, 'noswitch');
-			HVAC.LightBulb(290, 60);
+			HVAC.SPSTSwitch('spst1', 'sc1', 'sc2', 120, 120, 'noswitch');
+			HVAC.LightBulb('l1', 'lc1', 'lc2', 290, 60);
 			HVAC.DrawWire('w1', 'blue', 8, [10, 10, 10, 120]);
 			HVAC.DrawWire('w2', 'blue', 8, [10, 120, 120, 120]);
 			HVAC.DrawWire('w3', 'blue', 8, [160, 210, 290, 210]);

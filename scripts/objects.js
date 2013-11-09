@@ -26,15 +26,34 @@ var HVAC = (function () {
 				layer = new Kinetic.Layer();
 			}
 
-			this.LightBulb = function (left, top) {
+			this.LightBulb = function (id, cid, cid2, left, top) {
 
-				this.on = false;
+				var on;			
+				this.id = id;
+				var that = this;
+				$(this).on('reset', function(){
+					on = problem_set[level1.current_problem][level1.current_set][this.id].on;
+					if (on == false) {
+						on = true;
+						resistor.stroke();
+						context.fillStyle = grd;
+     					context.fill();
+     					context.stroke();
 
-				$(this).on('penis', function(){
-					alert('vagina');
+     					
+					} else {
+						on = false;
+						
+     					
+     					context.fillStyle = '#FFFFFF';
+     					context.fill();
+     					context.stroke();
+					}
+
+
 				});
 
-				var $html = $("<div style='position:absolute;top:" + top + "px;left:" + left + "px'><div style='top:151px;left:0px' class='contact'></div><div style='top:151px;right:0px' class='contact'></div><canvas width=96 height=180 id='light_bulb_canvas'></canvas></div>");
+				var $html = $("<div style='position:absolute;top:" + top + "px;left:" + left + "px'><div style='top:151px;left:0px' id = '" + cid + "' class='contact'></div><div style='top:151px;right:0px' id='" + cid2 + "'class='contact'></div><canvas width=96 height=180 id='light_bulb_canvas'></canvas></div>");
 				$('#canvas').append($html);
 
 
@@ -44,26 +63,6 @@ var HVAC = (function () {
 				
 
 				// begin custom shape
-				context.beginPath();
-
-				context.moveTo(28, 150);
-				context.lineTo(28, 125);
-				context.bezierCurveTo(-72, -30, 168, -30, 68, 125);
-				context.lineTo(68, 150);
-				
-				// complete custom shape
-				context.closePath();
-					var grd = context.createRadialGradient(48, 70, 10, 48, 70, 30);
-			      // light blue
-			    	grd.addColorStop(0, '#FFFFFF');
-			      // dark blue
-			    	grd.addColorStop(1, '#F0FF5A');
-				context.fillStyle = grd;
-     			context.fill();
-				context.lineWidth = 5;
-				context.strokeStyle = 'blue';
-				context.stroke();
-
 				bottom.beginPath();
 
 				bottom.moveTo(28, 150);
@@ -78,7 +77,7 @@ var HVAC = (function () {
 				bottom.stroke();
 
 				var resistor = canvas.getContext('2d');
-
+				
 				resistor.beginPath();
 
 				resistor.moveTo(42, 150);
@@ -105,6 +104,27 @@ var HVAC = (function () {
 				resistor.lineWidth = 2;
 				resistor.strokeStyle = 'blue';
 				resistor.stroke();
+				
+
+				context.beginPath();
+
+				context.moveTo(28, 150);
+				context.lineTo(28, 125);
+				context.bezierCurveTo(-72, -30, 168, -30, 68, 125);
+				context.lineTo(68, 150);
+				
+				// complete custom shape
+				context.closePath();
+					var grd = context.createRadialGradient(48, 70, 10, 48, 70, 30);
+			      // light blue
+			    	grd.addColorStop(0, '#FFFFFF');
+			      // dark blue
+			    	grd.addColorStop(1, '#F0FF5A');
+				context.lineWidth = 5;
+				context.strokeStyle = 'blue';
+				context.stroke();
+				$(this).trigger('reset');
+
 			}
 
 			this.DrawWire = function (wid, color, width, sarray){
@@ -156,7 +176,7 @@ var HVAC = (function () {
 			}
 
 
-			this.SPSTSwitch = function (id1, id2, left, top, newswitch) {
+			this.SPSTSwitch = function (sid, id1, id2, left, top, newswitch) {
 
 				this.tmp_current_set = '';
 
@@ -182,7 +202,7 @@ var HVAC = (function () {
 						//level1.setPset();
 						multiMeter1.clearMeter();
 					}
-
+					$('#canvas').trigger('reset');
 
 				}
 
@@ -190,9 +210,14 @@ var HVAC = (function () {
 			}
 			
 			function Level () {
-				this.current_problem = "problem_01";
-				this.current_set = "switch";
+				this.current_problem = "";
+				this.current_set = "";
 			}
+
+			this.Set = function (problem, set) {
+					level1.current_problem = problem;
+					level1.current_set = set;
+				}
 
 			function MultiMeter () {
 				this.odd = true;
@@ -339,7 +364,6 @@ var HVAC = (function () {
 
 			// METER CLICK HANDLER
 			function meterClickHandler () {
-				$('#canvas').trigger('penis')
 				mid = $(this).attr('id');
 				multiMeter1.mode = mid;
 				multiMeter1.clearMeter();
@@ -348,13 +372,6 @@ var HVAC = (function () {
 				$(this).addClass('v_active');
 
 			}
-
-			function resetCanvas() {
-				if (HVAC.LightBulb){
-					alert('hello');
-				}
-			}
-			//this.resetCanvas();
 
 			return this;
 			
