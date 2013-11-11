@@ -192,9 +192,48 @@ var HVAC = (function () {
 			}
 
 			this.Relay = function (id, c0, c1, c2, c3, c4, left , top) {
-				var $html = $("<div id ='" + id + "' class='relay'><div id='' style='top:px;left:px' class='contact'><div id='' style='top:px;left:px' class='contact'><div id='' style='top:px;left:px' class='contact'><div id='' class='contact-small'></div><div id='' class='contact-small'></div></div>");
+				var $html = $("<div id ='" + id + "' class='relay'><canvas id='r_canvas' width=120 height=90></canvas><div id='" + c0 + "' style='top:5px;left:-5px' class='contact'></div><div id='" + c1 + "' style='top:5px;right:-5px' class='contact'></div><div id='" + c2 + "' style='top:40px;right:-5px' class='contact'></div><div id='" + c3 + "' style='top:90px;left:0px' class='contact-small-half'></div><div id='" + c4 + "' style='top:90px;right:0px' class='contact-small-half'></div></div>");
 				$('#canvas').append($html);
 				$('#' + id).css({'top': top, 'left': left});
+
+						var canvas = document.getElementById('r_canvas');
+						  var context = canvas.getContext('2d');
+
+						  context.beginPath();
+						  context.moveTo(10, 18);
+						  context.lineTo(70, 18);
+
+						  context.moveTo(70, 8);
+						  context.lineTo(70, 28);
+
+						  context.moveTo(77, 8);
+						  context.lineTo(77, 28);
+
+						  context.moveTo(77, 18);
+						  context.lineTo(120, 18);
+
+						  context.moveTo(60, 18);
+						  context.lineTo(60, 55);
+						  context.lineTo(70, 55);
+
+						  context.moveTo(70, 45);
+						  context.lineTo(70, 65);
+
+						  context.moveTo(77, 45);
+						  context.lineTo(77, 65);
+
+						  context.moveTo(65, 63);
+						  context.lineTo(82, 47);
+
+						  context.moveTo(77, 55);
+						  context.lineTo(120, 55);
+						  
+						  
+						  
+						  context.lineWidth = 2;
+						  context.strokeStyle = '#cfcfcf';
+						  context.stroke();
+
 			}
 
 			this.SPSTSwitch = function (id, c0, c1, left, top, newswitch) {
