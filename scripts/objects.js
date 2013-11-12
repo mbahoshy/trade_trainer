@@ -44,11 +44,12 @@ var HVAC = (function () {
 
 				});
 
-				var $html = $("<div style='position:absolute;top:" + top + "px;left:" + left + "px'><div style='top:151px;left:0px' id = '" + cid + "' class='contact'></div><div style='top:151px;right:0px' id='" + cid2 + "'class='contact'></div><canvas width=96 height=180 id='light_bulb_canvas'></canvas></div>");
+				var $html = $("<div style='position:absolute;top:" + top + "px;left:" + left + "px'><div style='top:151px;left:0px' id = '" + cid + "' class='contact'></div><div style='top:151px;right:0px' id='" + cid2 + "'class='contact'></div><canvas width=96 height=180 id='light_bulb_canvas'></canvas><canvas width=96 height=180 id='res_canvas'></canvas></div>");
 				$('#canvas').append($html);
 
 
 				var canvas = document.getElementById('light_bulb_canvas');
+				var rrcanvas = document.getElementById('res_canvas');
 
 				var context = canvas.getContext('2d');
 				var bottom = canvas.getContext('2d');
@@ -68,7 +69,7 @@ var HVAC = (function () {
      			bottom.fill();
 				bottom.stroke();
 
-				var resistor = canvas.getContext('2d');
+				var resistor = rrcanvas.getContext('2d');
 				
 				resistor.beginPath();
 
@@ -191,49 +192,53 @@ var HVAC = (function () {
 				$('#' + id).css({'top': top, 'left': left});
 			}
 
-			this.Relay = function (id, c0, c1, c2, c3, c4, left , top) {
+			this.Relay = function (id, c0, c1, c2, c3, c4, left, top) {
 				var $html = $("<div id ='" + id + "' class='relay'><canvas id='r_canvas' width=120 height=90></canvas><div id='" + c0 + "' style='top:5px;left:-5px' class='contact'></div><div id='" + c1 + "' style='top:5px;right:-5px' class='contact'></div><div id='" + c2 + "' style='top:40px;right:-5px' class='contact'></div><div id='" + c3 + "' style='top:90px;left:0px' class='contact-small-half'></div><div id='" + c4 + "' style='top:90px;right:0px' class='contact-small-half'></div></div>");
 				$('#canvas').append($html);
 				$('#' + id).css({'top': top, 'left': left});
 
-						var canvas = document.getElementById('r_canvas');
-						  var context = canvas.getContext('2d');
+				var canvas = document.getElementById('r_canvas');
+				var context = canvas.getContext('2d');
 
-						  context.beginPath();
-						  context.moveTo(10, 18);
-						  context.lineTo(70, 18);
+				context.beginPath();
+				context.moveTo(10, 18);
+				context.lineTo(70, 18);
 
-						  context.moveTo(70, 8);
-						  context.lineTo(70, 28);
+				context.moveTo(70, 8);
+				context.lineTo(70, 28);
 
-						  context.moveTo(77, 8);
-						  context.lineTo(77, 28);
+				context.moveTo(77, 8);
+				context.lineTo(77, 28);
 
-						  context.moveTo(77, 18);
-						  context.lineTo(120, 18);
+				context.moveTo(77, 18);
+				context.lineTo(120, 18);
 
-						  context.moveTo(60, 18);
-						  context.lineTo(60, 55);
-						  context.lineTo(70, 55);
+				context.moveTo(60, 18);
+				context.lineTo(60, 55);
+				context.lineTo(70, 55);
 
-						  context.moveTo(70, 45);
-						  context.lineTo(70, 65);
+				context.moveTo(70, 45);
+				context.lineTo(70, 65);
 
-						  context.moveTo(77, 45);
-						  context.lineTo(77, 65);
+				context.moveTo(77, 45);
+				context.lineTo(77, 65);
 
-						  context.moveTo(65, 63);
-						  context.lineTo(82, 47);
+				context.moveTo(65, 63);
+				context.lineTo(82, 47);
 
-						  context.moveTo(77, 55);
-						  context.lineTo(120, 55);
-						  
-						  
-						  
-						  context.lineWidth = 2;
-						  context.strokeStyle = '#cfcfcf';
-						  context.stroke();
+				context.moveTo(77, 55);
+				context.lineTo(120, 55);
+					  
+				context.lineWidth = 2;
+				context.strokeStyle = '#cfcfcf';
+				context.stroke();
 
+			}
+
+			this.Transformer = function (id, c0, c1, c2, c3, left, top) {
+				var $html = $("<div id='" + id + "' class='transformer'><div class='tr-left'><div id='" + c0 + "' style='top:0px;left:-10px' class='contact'></div><div id='" + c1 + "' style='bottom:0px;left:-10px' class='contact'></div></div><div class='tr-center'></div><div class='tr-right'><div style='top:5px;right:-15px;' id='" + c2 + "' class='contact-small-half-right'></div><div style='bottom:5px;right:-15px' id='" + c3 + "' class='contact-small-half-right'></div></div></div> ");
+				$('#canvas').append($html);
+				$('#' + id).css({'top': top, 'left': left});
 			}
 
 			this.SPSTSwitch = function (id, c0, c1, left, top, newswitch) {
