@@ -14,7 +14,7 @@ var HVAC = (function () {
 				$('#canvas').css({'width': width, 'height': height});
 				$('#canvas').on('click', '.contact, .neutral, .l1, .l2, .contact-small', contactClickHandler);
 				
-				$('.v_button').click(meterClickHandler);
+				$('.multimeter_button').click(meterClickHandler);
 
 				stage = new Kinetic.Stage({
 					container: 'mycanvas',
@@ -63,7 +63,7 @@ var HVAC = (function () {
 				bottom.lineTo(28, 150);
 				bottom.bezierCurveTo(28, 180, 68, 180, 68, 150);
 				bottom.closePath();
-				bottom.lineWidth = 5;
+				bottom.lineWidth = 3;
 				bottom.strokeStyle = 'blue';
 				bottom.fillStyle = 'blue';
      			bottom.fill();
@@ -94,7 +94,7 @@ var HVAC = (function () {
 
 				// complete custom shape
 				resistor.closePath();
-				resistor.lineWidth = 2;
+				resistor.lineWidth = 1;
 				resistor.strokeStyle = 'blue';
 				resistor.stroke();
 				
@@ -113,7 +113,7 @@ var HVAC = (function () {
 			    	grd.addColorStop(0, '#FFFFFF');
 			      // dark blue
 			    	grd.addColorStop(1, '#F0FF5A');
-				context.lineWidth = 5;
+				context.lineWidth = 3;
 				context.strokeStyle = 'blue';
 				context.stroke();
 				$(this).trigger('reset');

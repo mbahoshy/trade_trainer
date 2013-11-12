@@ -3,6 +3,7 @@ body {
 	height:100%;
 	margin:0px;
 	font-family: Arial, Helvetica, Sans-serif;
+	background-color: #F7F7F7;
 }
 
 @font-face {
@@ -63,6 +64,7 @@ body {
 
 #canvas {
 	position:relative;
+	background-color: white;
 	/*width:700px;
 	height:500px;*/
 	border: 1px solid #424242;
@@ -78,7 +80,7 @@ body {
 
 #level_container {
 	width:950px;
-	margin-top:40px;
+	margin-top:50px;
 }
 
 
@@ -121,9 +123,9 @@ body {
 }
 
 .multimeter_button {
-	width:60px;
-	margin:20px 15px 0;
-	padding-top:5px;
+	width:65px;
+	margin-top:20px;
+	padding-top:10px;
 	height:30px;
 	text-align:center;
 	border-radius: 5px;
@@ -132,6 +134,15 @@ body {
 	border-style:solid;
 	border-width:1px;
 	border-color:#424242;
+	cursor:pointer;
+}
+
+.multimeter_button:first-child {
+	margin-left:15px;
+}
+
+.multimeter_button:last-child {
+	margin-right:15px;
 }
 
 .multimeter_button:hover {
@@ -208,6 +219,7 @@ body {
 	height:25px;
 	font-weight: bold;
 	border-radius: 5px;
+	text-align: center;
 }
 
 .l1 {
@@ -220,6 +232,20 @@ body {
 	height:25px;
 	font-weight: bold;
 	border-radius: 5px;
+	text-align: center;
+}
+
+.l2 {
+	position: absolute;
+	background-color: #FD0205;
+	border-style:solid;
+	border-width:2px;
+	border-color:#a4a4a4;
+	width:25px;
+	height:25px;
+	font-weight: bold;
+	border-radius: 5px;
+	text-align: center;
 }
 
 #res_canvas {
@@ -296,15 +322,7 @@ body {
 }
 
 
-.l2 {
-	position: absolute;
-	background-color: #FD0205;
-	border-style:solid;
-	border-width:2px;
-	border-color:#a4a4a4;
-	width:25px;
-	height:25px;
-}
+
 
 .border-red {
 	border-style:solid;
