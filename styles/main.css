@@ -2,6 +2,7 @@ body {
 	width:100%;
 	height:100%;
 	margin:0px;
+	font-family: Arial, Helvetica, Sans-serif;
 }
 
 @font-face {
@@ -16,7 +17,7 @@ body {
 
 #header {
 	width:100%;
-	height:200px;
+	height:100px;
 	background-color: #2C0E78;
 }
 
@@ -31,17 +32,16 @@ body {
 #header h1 {
 	margin:0px;
 	color:white;
-	font-size: 70px;
+	font-size: 40px;
 	padding-top:20px;
-	margin-left: -80px;
 	font-family: 'title';
 	font-weight: normal;
 }
 
 #header h2 {
-	margin:0px;
+	margin:0 15px;
 	color:white;
-	font-size: 25px;
+	font-size: 18px;
 	width:600px;
 	font-family: 'titleh2';
 }
@@ -65,7 +65,7 @@ body {
 	position:relative;
 	/*width:700px;
 	height:500px;*/
-	border: 3px solid #424242;
+	border: 1px solid #424242;
 	border-radius:15px;
 	-webkit-user-select: none;  /* Chrome all / Safari all */
 	-moz-user-select: none;     /* Firefox all */
@@ -78,25 +78,25 @@ body {
 
 #level_container {
 	width:950px;
-
+	margin-top:40px;
 }
 
 
 #multimeter {
 	float:left;
 
-	width:175px;
+	width:190px;
 	height:250px;
 	background-color:#f6ff0e;
 
-	border: 3px solid #424242;
+	border: 1px solid #CACA05;
 	border-radius:15px;
 	-moz-border-radius:15px;
 	-webkit-border-radius:15px;
 }
 
-#v_screen {
-	width:123px;
+#multimeter_screen {
+	width:140px;
 	height:40px;
 	margin-top:15px;
 	margin-left:auto;
@@ -115,17 +115,15 @@ body {
 	text-align:right;
 }
 
-#v_screen txt {
+#multimeter_screen txt {
 	padding-top:10px;
 	margin-left:10px;
 }
 
-.v_button {
+.multimeter_button {
 	width:60px;
-	margin-left:15px;
-	margin-top:20px;
+	margin:20px 15px 0;
 	padding-top:5px;
-	float:left;
 	height:30px;
 	text-align:center;
 	border-radius: 5px;
@@ -136,13 +134,13 @@ body {
 	border-color:#424242;
 }
 
-.v_button:hover {
+.multimeter_button:hover {
 	background-color:#ff8282;
 	color:#f30000;
 	font-weight:bold;
 }
 
-.v_active {
+.multimeter_active {
 	background-color:#c3c10c;
 }
 
@@ -284,6 +282,19 @@ body {
 	
 }
 
+.heater {
+	width:220px;
+	height:50px;
+	position:absolute;
+	background-color:#cfcfcf;		
+	border-style:solid;
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	border-color: #585858;
+	border-width:2px;
+}
+
 
 .l2 {
 	position: absolute;
@@ -360,6 +371,11 @@ body {
 	border-radius: 5px 5px 0px 0px;
 }
 
+.light-bulb {
+	width:95px;
+	background-color: blue;
+}
+
 .relay {
 	position:absolute;
 	width:130px;
@@ -383,32 +399,20 @@ body {
 	background:-moz-linear-gradient( center top, #ffc477 5%, #fb9e25 100% );
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffc477', endColorstr='#fb9e25');
 	background-color:#ffc477;
-	-webkit-border-top-left-radius:20px;
-	-moz-border-radius-topleft:20px;
-	border-top-left-radius:20px;
-	-webkit-border-top-right-radius:20px;
-	-moz-border-radius-topright:20px;
-	border-top-right-radius:20px;
-	-webkit-border-bottom-right-radius:20px;
-	-moz-border-radius-bottomright:20px;
-	border-bottom-right-radius:20px;
-	-webkit-border-bottom-left-radius:20px;
-	-moz-border-radius-bottomleft:20px;
-	border-bottom-left-radius:20px;
+
 	text-indent:0;
 	border:1px solid #eeb44f;
 	display:inline-block;
 	color:#ffffff;
 	font-family:Arial;
-	font-size:36px;
+	font-size:20px;
 	font-weight:bold;
 	font-style:normal;
-	height:65px;
-	line-height:65px;
-	width:200px;
 	text-decoration:none;
 	text-align:center;
 	text-shadow:1px 1px 0px #cc9f52;
+	border-radius: 10px;
+	padding:8px 18px;
 }
 .:hover {
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fb9e25), color-stop(1, #ffc477) );

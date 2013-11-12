@@ -27,8 +27,6 @@
 			HVAC.Line1('line1', 10, 10);
 			HVAC.Contact('c2', 10, 120);
 			HVAC.Contact('c3', 660, 212);
-			//HVAC.Relay('relay1', 'c1', 'rc2', 'rc3', 'rc4', 'rc5', 475, 30);
-			HVAC.Transformer('tran1', 'trc1', 'trc2', 'trc3', 'trc4', 475, 30);
 			
 			HVAC.Neutral('n1', 660, 10);
 			//HVAC.Contact('c3', 100, 100);
@@ -36,11 +34,12 @@
 
 			HVAC.SPSTSwitch('spst1', 'sc1', 'sc2', 120, 120, 'noswitch');
 			HVAC.LightBulb('l1', 'lc1', 'lc2', 290, 60);
-			HVAC.DrawWire('w1', 'blue', 8, [10, 10, 10, 120]);
-			HVAC.DrawWire('w2', 'blue', 8, [10, 120, 120, 120]);
-			HVAC.DrawWire('w3', 'blue', 8, [160, 210, 290, 210]);
-			HVAC.DrawWire('w4', 'blue', 8, [360, 210, 660, 210]);
-			HVAC.DrawWire('w5', 'blue', 8, [660, 210, 660, 10]);
+
+			HVAC.DrawWire('w1', 'blue', 5, [10, 10, 10, 120]);
+			HVAC.DrawWire('w2', 'blue', 5, [10, 120, 120, 120]);
+			HVAC.DrawWire('w3', 'blue', 2, [160, 210, 290, 210]);
+			HVAC.DrawWire('w4', 'blue', 2, [360, 210, 660, 210]);
+			HVAC.DrawWire('w5', 'blue', 2, [660, 210, 660, 10]);
 
 
 
@@ -54,7 +53,7 @@
 		<div id='header_wrapper'>
 			<div class='fleft'>
 				<h1>HVAC TRAINER</h1>
-				<h2>Learn to diagnose electrical circuits online. It's simple, it's fun, and it's free.</h2>
+				<h2>Learn to diagnose electrical circuits online.<!--It's simple, it's fun, and it's free.--></h2>
 			</div>
 			<a href='#' id='signup_button'>Sign Up!</a>
 		</div>

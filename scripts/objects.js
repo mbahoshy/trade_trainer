@@ -44,12 +44,12 @@ var HVAC = (function () {
 
 				});
 
-				var $html = $("<div style='position:absolute;top:" + top + "px;left:" + left + "px'><div style='top:151px;left:0px' id = '" + cid + "' class='contact'></div><div style='top:151px;right:0px' id='" + cid2 + "'class='contact'></div><canvas width=96 height=180 id='light_bulb_canvas'></canvas><canvas width=96 height=180 id='res_canvas'></canvas></div>");
+				var $html = $("<div class='light-bulb' id='" + id + "' style='position:absolute;top:" + top + "px;left:" + left + "px'><canvas style='position:absolute' width=96 height=180 id='" + id + "_lcanvas'></canvas><canvas style='position:absolute' width=96 height=180 id='" + id + "_rescanvas'></canvas><div style='top:151px;left:0px' id = '" + cid + "' class='contact'></div><div style='top:151px;right:0px' id='" + cid2 + "'class='contact'></div></div>");
 				$('#canvas').append($html);
 
 
-				var canvas = document.getElementById('light_bulb_canvas');
-				var rrcanvas = document.getElementById('res_canvas');
+				var canvas = document.getElementById(id + '_lcanvas');
+				var rrcanvas = document.getElementById(id + '_rescanvas');
 
 				var context = canvas.getContext('2d');
 				var bottom = canvas.getContext('2d');
@@ -193,11 +193,11 @@ var HVAC = (function () {
 			}
 
 			this.Relay = function (id, c0, c1, c2, c3, c4, left, top) {
-				var $html = $("<div id ='" + id + "' class='relay'><canvas id='r_canvas' width=120 height=90></canvas><div id='" + c0 + "' style='top:5px;left:-5px' class='contact'></div><div id='" + c1 + "' style='top:5px;right:-5px' class='contact'></div><div id='" + c2 + "' style='top:40px;right:-5px' class='contact'></div><div id='" + c3 + "' style='top:90px;left:0px' class='contact-small-half'></div><div id='" + c4 + "' style='top:90px;right:0px' class='contact-small-half'></div></div>");
+				var $html = $("<div id ='" + id + "' class='relay'><canvas id='" + id + "_rcanvas' width=120 height=90></canvas><div id='" + c0 + "' style='top:5px;left:-5px' class='contact'></div><div id='" + c1 + "' style='top:5px;right:-5px' class='contact'></div><div id='" + c2 + "' style='top:40px;right:-5px' class='contact'></div><div id='" + c3 + "' style='top:90px;left:0px' class='contact-small-half'></div><div id='" + c4 + "' style='top:90px;right:0px' class='contact-small-half'></div></div>");
 				$('#canvas').append($html);
 				$('#' + id).css({'top': top, 'left': left});
 
-				var canvas = document.getElementById('r_canvas');
+				var canvas = document.getElementById(id + '_rcanvas');
 				var context = canvas.getContext('2d');
 
 				context.beginPath();
@@ -236,29 +236,29 @@ var HVAC = (function () {
 			}
 
 			this.Transformer = function (id, c0, c1, c2, c3, left, top) {
-				var $html = $("<div id='" + id + "' class='transformer'><div class='tr-left'><canvas id='tr_canvas1' height=90 width=40 ></canvas><div id='" + c0 + "' style='top:0px;left:-15px' class='contact'></div><div id='" + c1 + "' style='bottom:0px;left:-15px' class='contact'></div></div><div class='tr-center'></div><div class='tr-right'><canvas id='tr_canvas2' height=90 width=40></canvas><div style='top:5px;right:-10px;' id='" + c2 + "' class='contact-small'></div><div style='bottom:5px;right:-10px' id='" + c3 + "' class='contact-small'></div></div></div> ");
+				var $html = $("<div id='" + id + "' class='transformer'><div class='tr-left'><canvas id='" + id + "_trcanvas1' height=90 width=40 ></canvas><div id='" + c0 + "' style='top:0px;left:-15px' class='contact'></div><div id='" + c1 + "' style='bottom:0px;left:-15px' class='contact'></div></div><div class='tr-center'></div><div class='tr-right'><canvas id='" + id +"_trcanvas2' height=90 width=40></canvas><div style='top:5px;right:-10px;' id='" + c2 + "' class='contact-small'></div><div style='bottom:5px;right:-10px' id='" + c3 + "' class='contact-small'></div></div></div> ");
 				$('#canvas').append($html);
 				$('#' + id).css({'top': top, 'left': left});
 
-				var canvas = document.getElementById('tr_canvas1');
+				var canvas = document.getElementById(id + '_trcanvas1');
 				var context = canvas.getContext('2d');
 
 				context.beginPath();
 				context.moveTo(0, 15);
 
-				context.lineTo(25, 15);
-				context.bezierCurveTo(36, 15, 36, 27, 25, 27);
-				context.bezierCurveTo(36, 27, 36, 39, 25, 39);
-				context.bezierCurveTo(36, 39, 36, 51, 25, 51);
-				context.bezierCurveTo(36, 51, 36, 63, 25, 63);
-				context.bezierCurveTo(36, 63, 36, 75, 25, 75);
+				context.lineTo(21, 15);
+				context.bezierCurveTo(36, 15, 36, 27, 21, 27);
+				context.bezierCurveTo(36, 27, 36, 39, 21, 39);
+				context.bezierCurveTo(36, 39, 36, 51, 21, 51);
+				context.bezierCurveTo(36, 51, 36, 63, 21, 63);
+				context.bezierCurveTo(36, 63, 36, 75, 21, 75);
 				context.lineTo(0, 75);
 
 				context.lineWidth = 2;
 				context.strokeStyle = '#cfcfcf';
 				context.stroke();
 
-				var canvas2 = document.getElementById('tr_canvas2');
+				var canvas2 = document.getElementById(id + '_trcanvas2');
 				var context2 = canvas2.getContext('2d');
 
 				context2.beginPath();
@@ -327,6 +327,57 @@ var HVAC = (function () {
 					level1.current_set = set;
 			}
 
+			this.Heater = function (id, c0, c1, left, top) {
+				$(this).on('reset', function(){
+					var on = problem_set[level1.current_problem][level1.current_set][id].on;
+					if (on === false) {
+     					
+     					$('#' + id).css("background-color", "blue");
+					} else if (on === true) {
+						
+						$('#' + id).css("background-color", "red");
+						//$('#' + id).animate({backgroundColor:"#ff000"}, 1000);
+					}
+					
+				});
+
+
+				var $html = $("<div style='top:" + top + "px;left:" + left + "px' id='" + id + "' class='heater'><canvas id='" + id + "_hcanvas' width=220 height=50 id='" + id + "canvas'></canvas><div style='top:10px;left:-10px' id='" + c0 + "' class='contact'></div><div style='top:10px;right:-10px' id ='" + c1 + "' class='contact'></div></div>");
+				$('#canvas').append($html);
+
+				var canvas = document.getElementById(id + '_hcanvas');
+				var context = canvas.getContext('2d');
+
+				context.beginPath();
+				context.moveTo(0, 25);
+				context.lineTo(25, 25);
+
+				context.lineTo(30, 38);
+				context.lineTo(40, 12);
+				context.lineTo(50, 38);
+				context.lineTo(60, 12);
+				context.lineTo(70, 38);
+				context.lineTo(80, 12);
+				context.lineTo(90, 38);
+				context.lineTo(100, 12);
+				context.lineTo(110, 38);
+				context.lineTo(120, 12);
+				context.lineTo(130, 38);
+				context.lineTo(140, 12);
+				context.lineTo(150, 38);
+				context.lineTo(160, 12);
+				context.lineTo(170, 38);
+				context.lineTo(180, 12);
+				context.lineTo(190, 38);
+				context.lineTo(195, 25);
+				context.lineTo(220, 25);
+
+				context.lineWidth = 3;
+				context.strokeStyle = '#585858';
+				context.stroke();
+				$(this).trigger('reset');
+			}
+
 			
 			function Level () {
 				this.current_problem = "";
@@ -345,7 +396,7 @@ var HVAC = (function () {
 				this.mode='Volts';
 
 				this.create = function () {
-					var $html = $("<div id='multimeter'><div id='v_screen'><span id='answer'></span> <span id='unit'>Volts</span></div><div id='Volts' class='v_button active_mm'>Volts</div><div id='Ohms' class='v_button'>Ohms</div><div id='Amps' class='v_button'>Amps</div><div id='Ferads' class='v_button'>Ferads</div></div>");
+					var $html = $("<div id='multimeter'><div id='multimeter_screen'><span id='answer'></span> <span id='unit'>Volts</span></div><div><div id='Volts' class='fleft multimeter_button multimeter_active'>Volts</div><div id='Ohms' class='fright multimeter_button'>Ohms</div></div><div><div id='Amps' class='fleft multimeter_button'>Amps</div><div id='Ferads' class='fright multimeter_button'>Ferads</div></div></div>");
 					$('#level_container').append($html);
 				}
 
@@ -483,8 +534,8 @@ var HVAC = (function () {
 				multiMeter1.mode = mid;
 				multiMeter1.clearMeter();
 				$('#unit').html(mid);
-				$('.v_active').removeClass('v_active');
-				$(this).addClass('v_active');
+				$('.multimeter_active').removeClass('multimeter_active');
+				$(this).addClass('multimeter_active');
 
 			}
 

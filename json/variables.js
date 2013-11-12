@@ -24,8 +24,14 @@ var problem_set = {
 
 			//light
 			"l1": {"on": true},
+			"l2": {"on": true},
+			"l3": {"on": true},
 			"lc1": {"Volts": "l1", "Ohms": 14, "Ferads": '', "Device": 'ss'},
-			"lc2": {"Volts": "g", "Ohms": 14, "Ferads": '', "Device": 'ss'}
+			"lc2": {"Volts": "g", "Ohms": 14, "Ferads": '', "Device": 'ss'},
+
+			//heater
+			"heat1": {"on": true},
+			"heat2": {"on": false}
 
 
 		},
@@ -52,8 +58,13 @@ var problem_set = {
 
 			//light
 			"l1": {"on": false},
+			"l2": {"on": false},
 			"lc1": {"Volts": "g", "Ohms": 14, "Ferads": '', "Device": 'ss'},
-			"lc2": {"Volts": "g", "Ohms": 14, "Ferads": '', "Device": 'ss'}
+			"lc2": {"Volts": "g", "Ohms": 14, "Ferads": '', "Device": 'ss'},
+
+			//heater
+			"heat1": {"on": false},
+			"heat2": {"on": true}
 		}
 	}
 };
