@@ -236,7 +236,7 @@ var HVAC = (function () {
 			}
 
 			this.Transformer = function (id, c0, c1, c2, c3, left, top) {
-				var $html = $("<div id='" + id + "' class='transformer'><div class='tr-left'><canvas id='tr_canvas1' height=90 width=40 ></canvas><div id='" + c0 + "' style='top:0px;left:-15px' class='contact'></div><div id='" + c1 + "' style='bottom:0px;left:-15px' class='contact'></div></div><div class='tr-center'></div><div class='tr-right'><div style='top:5px;right:-10px;' id='" + c2 + "' class='contact-small'></div><div style='bottom:5px;right:-10px' id='" + c3 + "' class='contact-small'></div></div></div> ");
+				var $html = $("<div id='" + id + "' class='transformer'><div class='tr-left'><canvas id='tr_canvas1' height=90 width=40 ></canvas><div id='" + c0 + "' style='top:0px;left:-15px' class='contact'></div><div id='" + c1 + "' style='bottom:0px;left:-15px' class='contact'></div></div><div class='tr-center'></div><div class='tr-right'><canvas id='tr_canvas2' height=90 width=40></canvas><div style='top:5px;right:-10px;' id='" + c2 + "' class='contact-small'></div><div style='bottom:5px;right:-10px' id='" + c3 + "' class='contact-small'></div></div></div> ");
 				$('#canvas').append($html);
 				$('#' + id).css({'top': top, 'left': left});
 
@@ -245,37 +245,39 @@ var HVAC = (function () {
 
 				context.beginPath();
 				context.moveTo(0, 15);
-				context.lineTo(34, 15);
-				context.lineTo(30, 18);
-				context.lineTo(34, 21);
-				context.lineTo(30, 24);
-				context.lineTo(34, 27);
-				context.lineTo(30, 30);
-				context.lineTo(34, 33);
-				context.lineTo(30, 36);
-				context.lineTo(34, 39);
-				context.lineTo(30, 42);
-				context.lineTo(34, 45);
-				context.lineTo(30, 48);
-				context.lineTo(34, 51);
-				context.lineTo(30, 54);
-				context.lineTo(34, 57);
-				context.lineTo(30, 60);
-				context.lineTo(34, 63);
-				context.lineTo(30, 66);
-				context.lineTo(34, 69);
-				context.lineTo(30, 72);
-				context.lineTo(34, 75);
 
-
-				context.lineTo(30, 75);
+				context.lineTo(25, 15);
+				context.bezierCurveTo(36, 15, 36, 27, 25, 27);
+				context.bezierCurveTo(36, 27, 36, 39, 25, 39);
+				context.bezierCurveTo(36, 39, 36, 51, 25, 51);
+				context.bezierCurveTo(36, 51, 36, 63, 25, 63);
+				context.bezierCurveTo(36, 63, 36, 75, 25, 75);
 				context.lineTo(0, 75);
-
-			
 
 				context.lineWidth = 2;
 				context.strokeStyle = '#cfcfcf';
 				context.stroke();
+
+				var canvas2 = document.getElementById('tr_canvas2');
+				var context2 = canvas2.getContext('2d');
+
+				context2.beginPath();
+				context2.moveTo(40, 15);
+				context2.lineTo(15, 15);
+				context2.bezierCurveTo(6, 15, 6, 27, 15, 27);
+				context2.bezierCurveTo(6, 27, 6, 39, 15, 39);
+				context2.bezierCurveTo(6, 39, 6, 51, 15, 51);
+				context2.bezierCurveTo(6, 51, 6, 63, 15, 63);
+				context2.bezierCurveTo(6, 63, 6, 75, 15, 75);
+				
+				context2.lineTo(40, 75);
+
+			
+
+				context2.lineWidth = 2;
+				context2.strokeStyle = '#cfcfcf';
+				context2.stroke();
+				//context.bezierCurveTo(-72, -30, 168, -30, 68, 125);
 			}
 
 			this.SPSTSwitch = function (id, c0, c1, left, top, newswitch) {
