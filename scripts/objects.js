@@ -330,29 +330,38 @@ var HVAC = (function () {
 			}
 
 			this.Heater = function (id, c0, c1, left, top) {
-				this.setint = ''; 
 				function glow () {
 					$('#' + id + ' > .heater-on').fadeIn(2500);
 					$('#' + id + ' > .heater-on').fadeOut(2500);
+					console.log($('#' + id));
+				}
+				var setint;
+				function resetHeater () {
+					
+					var on = problem_set[level1.current_problem][level1.current_set][id].on;
+					if (on === false) {
+						//$('#' + id + '_hon').removeClass('heater-on');
+						
+						clearInterval (setint);
+						$('#' + id + '_hon').remove();
+						//$('#' + id + ' > .heater-on').css("display:none");
+						
+						
+					} else if (on === true) {
+							$('#' + id + '_hon').remove();
+							$('#' + id).prepend("<div id='" + id + "_hon' class='heater-on'></div>");
+						
+						glow();
+						setint = setInterval(function(){glow()}, 5000);					
+					}
+				
 				}
 				
 				
-				$(this).on('reset.Heater', function(){
-					var on = problem_set[level1.current_problem][level1.current_set][id].on;
-					if (on === false) {
-						clearInterval (this.setint);
-						$('#' + id + '_hon').removeClass('heater-on');
-					} else if (on === true) {
-						$('#' + id + '_hon').addClass('heater-on');
-						this.setint = setInterval(function(){glow()}, 100);
-						
-						
-					}
-					
-				});
+				$(this).on('reset.Heater', resetHeater);
 
 
-				var $html = $("<div style='top:" + top + "px;left:" + left + "px' id='" + id + "' class='heater'><div id='" + id + "_hon' class='heater-on' ></div><canvas id='" + id + "_hcanvas' width=220 height=50 id='" + id + "canvas'></canvas><div style='top:10px;left:-10px' id='" + c0 + "' class='contact'></div><div style='top:10px;right:-10px' id ='" + c1 + "' class='contact'></div></div>");
+				var $html = $("<div style='top:" + top + "px;left:" + left + "px' id='" + id + "' class='heater'><canvas id='" + id + "_hcanvas' width=220 height=50 id='" + id + "canvas'></canvas><div style='top:10px;left:-10px' id='" + c0 + "' class='contact'></div><div style='top:10px;right:-10px' id ='" + c1 + "' class='contact'></div></div>");
 				$('#canvas').append($html);
 
 				var canvas = document.getElementById(id + '_hcanvas');
@@ -386,7 +395,7 @@ var HVAC = (function () {
 				context.strokeStyle = '#585858';
 				context.stroke();
 				
-				$(this).trigger('reset.Heater');
+				resetHeater();
 			}
 
 			

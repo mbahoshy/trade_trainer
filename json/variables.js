@@ -31,7 +31,8 @@ var problem_set = {
 
 			//heater
 			"heat1": {"on": true},
-			"heat2": {"on": false}
+			"heat2": {"on": false},
+			"heat3": {"on": false}
 
 
 		},
@@ -64,7 +65,9 @@ var problem_set = {
 
 			//heater
 			"heat1": {"on": false},
-			"heat2": {"on": true}
+			"heat2": {"on": true},
+			"heat3": {"on": true}
+			
 		}
 	}
 };
