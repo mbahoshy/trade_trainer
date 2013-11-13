@@ -27,7 +27,7 @@ var HVAC = (function () {
 
 			this.LightBulb = function (id, cid, cid2, left, top) {		
 
-				$(this).on('reset', function(){
+				$(this).on('reset.LightBulb', function(){
 					var on = problem_set[level1.current_problem][level1.current_set][id].on;
 					if (on === false) {
 						context.fillStyle = '#FFFFFF';
@@ -116,7 +116,7 @@ var HVAC = (function () {
 				context.lineWidth = 3;
 				context.strokeStyle = 'blue';
 				context.stroke();
-				$(this).trigger('reset');
+				$(this).trigger('reset.LightBulb');
 
 			}
 
@@ -284,7 +284,7 @@ var HVAC = (function () {
 
 				this.tmp_current_set = ''; //keeps track of the current_set before the switch was hit
 
-				$(this).on('reset', function () {
+				$(this).on('reset.SPSTSwitch', function () {
 					var on = problem_set[level1.current_problem][level1.current_set][id].on;
 					if (on === false) {
 						$('#' + id + ' > .switch').html("<div class='switch-off'><p>OFF</p></div>")
@@ -320,6 +320,8 @@ var HVAC = (function () {
 				}
 
 				this.create(id, c0, c1, left, top, newswitch);
+				
+				$(this).trigger('reset.SPSTSwitch');
 			}
 
 			this.Set = function (problem, set) {
@@ -328,21 +330,29 @@ var HVAC = (function () {
 			}
 
 			this.Heater = function (id, c0, c1, left, top) {
-				$(this).on('reset', function(){
+				this.setint = ''; 
+				function glow () {
+					$('#' + id + ' > .heater-on').fadeIn(2500);
+					$('#' + id + ' > .heater-on').fadeOut(2500);
+				}
+				
+				
+				$(this).on('reset.Heater', function(){
 					var on = problem_set[level1.current_problem][level1.current_set][id].on;
 					if (on === false) {
-     					
-     					$('#' + id).css("background-color", "blue");
+						clearInterval (this.setint);
+						$('#' + id + '_hon').removeClass('heater-on');
 					} else if (on === true) {
+						$('#' + id + '_hon').addClass('heater-on');
+						this.setint = setInterval(function(){glow()}, 100);
 						
-						$('#' + id).css("background-color", "red");
-						//$('#' + id).animate({backgroundColor:"#ff000"}, 1000);
+						
 					}
 					
 				});
 
 
-				var $html = $("<div style='top:" + top + "px;left:" + left + "px' id='" + id + "' class='heater'><canvas id='" + id + "_hcanvas' width=220 height=50 id='" + id + "canvas'></canvas><div style='top:10px;left:-10px' id='" + c0 + "' class='contact'></div><div style='top:10px;right:-10px' id ='" + c1 + "' class='contact'></div></div>");
+				var $html = $("<div style='top:" + top + "px;left:" + left + "px' id='" + id + "' class='heater'><div id='" + id + "_hon' class='heater-on' ></div><canvas id='" + id + "_hcanvas' width=220 height=50 id='" + id + "canvas'></canvas><div style='top:10px;left:-10px' id='" + c0 + "' class='contact'></div><div style='top:10px;right:-10px' id ='" + c1 + "' class='contact'></div></div>");
 				$('#canvas').append($html);
 
 				var canvas = document.getElementById(id + '_hcanvas');
@@ -375,7 +385,8 @@ var HVAC = (function () {
 				context.lineWidth = 3;
 				context.strokeStyle = '#585858';
 				context.stroke();
-				$(this).trigger('reset');
+				
+				$(this).trigger('reset.Heater');
 			}
 
 			
