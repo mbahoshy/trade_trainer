@@ -424,6 +424,12 @@ body {
 	border-radius: 8px 8px 0px 0px;
 }
 
+.highlight-wire {
+	opacity:.6;
+	background-color:red;
+	padding:20px;
+}
+
 #mycanvas {
 	position:relative;
 }

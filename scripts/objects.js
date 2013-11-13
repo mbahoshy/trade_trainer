@@ -26,8 +26,97 @@ var HVAC = (function () {
 			}
 
 			this.LightBulb = function (id, cid, cid2, left, top) {		
+				
+				var canvas;
+				var rrcanvas;
+				var context;
+				var bottom;
+				var resistor;
+				var grd;
+				
+				$(this).on('reset.LightBulb', resetLightBulb); //assign reset event
+				
+				//creates light bulb html and appends
+				(function (){
+					var $html = $("<div class='light-bulb' id='" + id + "' style='position:absolute;top:" + top + "px;left:" + left + "px'><canvas style='position:absolute' width=96 height=180 id='" + id + "_lcanvas'></canvas><canvas style='position:absolute' width=96 height=180 id='" + id + "_rescanvas'></canvas><div style='top:151px;left:0px' id = '" + cid + "' class='contact'></div><div style='top:151px;right:0px' id='" + cid2 + "'class='contact'></div></div>");
+					$('#canvas').append($html);
+				})();
+				
+				//draws light bulb
+				(function () {
+					canvas = document.getElementById(id + '_lcanvas');
+					rrcanvas = document.getElementById(id + '_rescanvas');
 
-				$(this).on('reset.LightBulb', function(){
+					context = canvas.getContext('2d');
+					bottom = canvas.getContext('2d');
+					
+					resistor = rrcanvas.getContext('2d');
+
+					// begin custom shape
+					bottom.beginPath();
+
+					bottom.moveTo(28, 150);
+					
+					bottom.lineTo(28, 150);
+					bottom.bezierCurveTo(28, 180, 68, 180, 68, 150);
+					bottom.closePath();
+					bottom.lineWidth = 3;
+					bottom.strokeStyle = 'blue';
+					bottom.fillStyle = 'blue';
+					bottom.fill();
+					bottom.stroke();
+
+					
+					
+					resistor.beginPath();
+
+					resistor.moveTo(42, 150);
+					resistor.lineTo(42, 110);
+					resistor.lineTo(27, 70);
+
+					resistor.lineTo(30, 66);
+					resistor.lineTo(36, 74);
+					resistor.lineTo(42, 66);
+					resistor.lineTo(48, 74);
+					resistor.lineTo(54, 66);
+					resistor.lineTo(60, 74);
+					resistor.lineTo(66, 66);
+					resistor.lineTo(69, 70);
+		
+				
+
+					resistor.lineTo(69, 70);
+					resistor.lineTo(53, 110);
+					resistor.lineTo(53, 150);
+
+					// complete custom shape
+					resistor.closePath();
+					resistor.lineWidth = 1;
+					resistor.strokeStyle = 'blue';
+					resistor.stroke();
+					
+
+					context.beginPath();
+
+					context.moveTo(28, 150);
+					context.lineTo(28, 125);
+					context.bezierCurveTo(-72, -30, 168, -30, 68, 125);
+					context.lineTo(68, 150);
+					
+					// complete custom shape
+					context.closePath();
+						grd = context.createRadialGradient(48, 70, 10, 48, 70, 30);
+					  // light blue
+						grd.addColorStop(0, '#FFFFFF');
+					  // dark blue
+						grd.addColorStop(1, '#F0FF5A');
+					context.lineWidth = 3;
+					context.strokeStyle = 'blue';
+					context.stroke();
+				})();
+				
+				//checks to see if light is on or off
+				function resetLightBulb () {
 					var on = problem_set[level1.current_problem][level1.current_set][id].on;
 					if (on === false) {
 						context.fillStyle = '#FFFFFF';
@@ -40,88 +129,24 @@ var HVAC = (function () {
      					context.fill();
      					context.stroke();
 					}
-
-
-				});
-
-				var $html = $("<div class='light-bulb' id='" + id + "' style='position:absolute;top:" + top + "px;left:" + left + "px'><canvas style='position:absolute' width=96 height=180 id='" + id + "_lcanvas'></canvas><canvas style='position:absolute' width=96 height=180 id='" + id + "_rescanvas'></canvas><div style='top:151px;left:0px' id = '" + cid + "' class='contact'></div><div style='top:151px;right:0px' id='" + cid2 + "'class='contact'></div></div>");
-				$('#canvas').append($html);
-
-
-				var canvas = document.getElementById(id + '_lcanvas');
-				var rrcanvas = document.getElementById(id + '_rescanvas');
-
-				var context = canvas.getContext('2d');
-				var bottom = canvas.getContext('2d');
+				}
 				
-
-				// begin custom shape
-				bottom.beginPath();
-
-				bottom.moveTo(28, 150);
-				
-				bottom.lineTo(28, 150);
-				bottom.bezierCurveTo(28, 180, 68, 180, 68, 150);
-				bottom.closePath();
-				bottom.lineWidth = 3;
-				bottom.strokeStyle = 'blue';
-				bottom.fillStyle = 'blue';
-     			bottom.fill();
-				bottom.stroke();
-
-				var resistor = rrcanvas.getContext('2d');
-				
-				resistor.beginPath();
-
-				resistor.moveTo(42, 150);
-				resistor.lineTo(42, 110);
-				resistor.lineTo(27, 70);
-
-				resistor.lineTo(30, 66);
-				resistor.lineTo(36, 74);
-				resistor.lineTo(42, 66);
-				resistor.lineTo(48, 74);
-				resistor.lineTo(54, 66);
-				resistor.lineTo(60, 74);
-				resistor.lineTo(66, 66);
-				resistor.lineTo(69, 70);
-	
-			
-
-				resistor.lineTo(69, 70);
-				resistor.lineTo(53, 110);
-				resistor.lineTo(53, 150);
-
-				// complete custom shape
-				resistor.closePath();
-				resistor.lineWidth = 1;
-				resistor.strokeStyle = 'blue';
-				resistor.stroke();
-				
-
-				context.beginPath();
-
-				context.moveTo(28, 150);
-				context.lineTo(28, 125);
-				context.bezierCurveTo(-72, -30, 168, -30, 68, 125);
-				context.lineTo(68, 150);
-				
-				// complete custom shape
-				context.closePath();
-					var grd = context.createRadialGradient(48, 70, 10, 48, 70, 30);
-			      // light blue
-			    	grd.addColorStop(0, '#FFFFFF');
-			      // dark blue
-			    	grd.addColorStop(1, '#F0FF5A');
-				context.lineWidth = 3;
-				context.strokeStyle = 'blue';
-				context.stroke();
-				$(this).trigger('reset.LightBulb');
+				resetLightBulb ();
 
 			}
 
 			this.DrawWire = function (wid, color, width, sarray){
-
+				$(this).on('reset.DrawWire', resetDrawWire);
+				
+				function resetDrawWire () {
+					var lines = stage.get('.selected');
+					lines.each(function (line) {
+						line.setName('linehover');
+						line.on('mouseout', wire_mouseout);
+						line.fire('mouseout');
+					});
+				}
+				
 				function wire_mouseover() {
 					this.setOpacity(.6);
 					layer.draw();
@@ -144,6 +169,7 @@ var HVAC = (function () {
 
 				wid = new Kinetic.Line({
 					id: wid,
+					name: 'linehover',
 					points: nsarray,
 					stroke: 'red',
 					strokeWidth: 20,
@@ -151,8 +177,28 @@ var HVAC = (function () {
 					lineJoin: 'round',
 					opacity:0
 				});
+				
+				
 
-				wid.on('click', function () { multiMeter1.Amps(this.getId());});
+				wid.on('click', function () {
+					var lines = stage.get('.selected');
+					multiMeter1.clearMeter();
+					lines.each(function (line) {
+						if (line.getId() != wid.getId() ) {
+							alert(line.getId());
+							line.setName('linehover');
+							line.on('mouseout', wire_mouseout);
+							line.fire('mouseout');
+						} else {
+
+						}
+					});
+					wid.setName('selected');
+					wid.off('mouseout');
+					multiMeter1.Amps(this.getId());
+					
+				});
+		
 				wid.on('mouseover', wire_mouseover);
 				wid.on('mouseout', wire_mouseout);
 
@@ -283,15 +329,17 @@ var HVAC = (function () {
 			this.SPSTSwitch = function (id, c0, c1, left, top, newswitch) {
 
 				this.tmp_current_set = ''; //keeps track of the current_set before the switch was hit
-
-				$(this).on('reset.SPSTSwitch', function () {
+				
+				function resetSPSTSwitch () {
 					var on = problem_set[level1.current_problem][level1.current_set][id].on;
 					if (on === false) {
 						$('#' + id + ' > .switch').html("<div class='switch-off'><p>OFF</p></div>")
 					} else if (on === true) {
 						$('#' + id + ' > .switch').html("<div class='switch-on'><p>ON</p></div>")
-					}
-				});
+					}	
+				}
+				
+				$(this).on('reset.SPSTSwitch', resetSPSTSwitch);
 
 				this.create = function (id, c0, c1, left, top, newswitch) {
 
@@ -321,7 +369,7 @@ var HVAC = (function () {
 
 				this.create(id, c0, c1, left, top, newswitch);
 				
-				$(this).trigger('reset.SPSTSwitch');
+				resetSPSTSwitch ();
 			}
 
 			this.Set = function (problem, set) {
@@ -330,12 +378,20 @@ var HVAC = (function () {
 			}
 
 			this.Heater = function (id, c0, c1, left, top) {
+				var setint;
+				
+				//create html and append
+				(function() {
+					var $html = $("<div style='top:" + top + "px;left:" + left + "px' id='" + id + "' class='heater'><canvas id='" + id + "_hcanvas' width=220 height=50 id='" + id + "canvas'></canvas><div style='top:10px;left:-10px' id='" + c0 + "' class='contact'></div><div style='top:10px;right:-10px' id ='" + c1 + "' class='contact'></div></div>");
+					$('#canvas').append($html);
+				})();
+				
 				function glow () {
 					$('#' + id + ' > .heater-on').fadeIn(2500);
 					$('#' + id + ' > .heater-on').fadeOut(2500);
 					console.log($('#' + id));
 				}
-				var setint;
+				
 				function resetHeater () {
 					
 					var on = problem_set[level1.current_problem][level1.current_set][id].on;
@@ -356,45 +412,43 @@ var HVAC = (function () {
 					}
 				
 				}
-				
-				
-				$(this).on('reset.Heater', resetHeater);
+							
+				$(this).on('reset.Heater', resetHeater); //sets reset event to object
+		
+				//draw resistor
+				(function () {
+					var canvas = document.getElementById(id + '_hcanvas');
+					var context = canvas.getContext('2d');
 
+					context.beginPath();
+					context.moveTo(0, 25);
+					context.lineTo(25, 25);
 
-				var $html = $("<div style='top:" + top + "px;left:" + left + "px' id='" + id + "' class='heater'><canvas id='" + id + "_hcanvas' width=220 height=50 id='" + id + "canvas'></canvas><div style='top:10px;left:-10px' id='" + c0 + "' class='contact'></div><div style='top:10px;right:-10px' id ='" + c1 + "' class='contact'></div></div>");
-				$('#canvas').append($html);
+					context.lineTo(30, 38);
+					context.lineTo(40, 12);
+					context.lineTo(50, 38);
+					context.lineTo(60, 12);
+					context.lineTo(70, 38);
+					context.lineTo(80, 12);
+					context.lineTo(90, 38);
+					context.lineTo(100, 12);
+					context.lineTo(110, 38);
+					context.lineTo(120, 12);
+					context.lineTo(130, 38);
+					context.lineTo(140, 12);
+					context.lineTo(150, 38);
+					context.lineTo(160, 12);
+					context.lineTo(170, 38);
+					context.lineTo(180, 12);
+					context.lineTo(190, 38);
+					context.lineTo(195, 25);
+					context.lineTo(220, 25);
 
-				var canvas = document.getElementById(id + '_hcanvas');
-				var context = canvas.getContext('2d');
-
-				context.beginPath();
-				context.moveTo(0, 25);
-				context.lineTo(25, 25);
-
-				context.lineTo(30, 38);
-				context.lineTo(40, 12);
-				context.lineTo(50, 38);
-				context.lineTo(60, 12);
-				context.lineTo(70, 38);
-				context.lineTo(80, 12);
-				context.lineTo(90, 38);
-				context.lineTo(100, 12);
-				context.lineTo(110, 38);
-				context.lineTo(120, 12);
-				context.lineTo(130, 38);
-				context.lineTo(140, 12);
-				context.lineTo(150, 38);
-				context.lineTo(160, 12);
-				context.lineTo(170, 38);
-				context.lineTo(180, 12);
-				context.lineTo(190, 38);
-				context.lineTo(195, 25);
-				context.lineTo(220, 25);
-
-				context.lineWidth = 3;
-				context.strokeStyle = '#585858';
-				context.stroke();
-				
+					context.lineWidth = 3;
+					context.strokeStyle = '#585858';
+					context.stroke();
+				})();
+		
 				resetHeater();
 			}
 
@@ -525,6 +579,7 @@ var HVAC = (function () {
 
 			// CONTACT CLICK HANDLER 
 			function contactClickHandler () {
+				$('#canvas').trigger('reset.DrawWire');
 				cid = $(this).attr('id');
 				mode = multiMeter1.mode;
 
